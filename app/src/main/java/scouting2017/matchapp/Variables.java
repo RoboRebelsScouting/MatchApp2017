@@ -30,11 +30,14 @@ import static scouting2017.matchapp.R.id.numberOfLowGoalsText;
 public class Variables {
     public int numberGearsPickedUpAuto;
     public int numberGearsPlacedAuto;
+    public int numberDroppedGearsAuto;
     public int numberLowGoalsAuto;
     public int numberHighGoalsAuto;
     public int numberHoppersDumpedAuto;
     public int numberHumanGears;
     public int numberGroundGears;
+    public int numberOfGearsPlaced;
+    public int numberOfGearsDropped;
     public int numberHopperBalls;
     public int numberHoppersDumpedTeleop;
     public int numberGroundBalls;
@@ -57,11 +60,14 @@ public class Variables {
     public void reset() {
         numberGearsPickedUpAuto = 0;
         numberGearsPlacedAuto = 0;
+        numberDroppedGearsAuto = 0;
         numberLowGoalsAuto = 0;
         numberHighGoalsAuto = 0;
         numberHoppersDumpedAuto = 0;
         numberHumanGears = 0;
         numberGroundGears = 0;
+        numberOfGearsPlaced = 0;
+        numberOfGearsDropped = 0;
         numberHopperBalls = 0;
         numberHoppersDumpedTeleop = 0;
         numberGroundBalls = 0;
