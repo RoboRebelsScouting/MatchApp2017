@@ -45,14 +45,13 @@
         android:layout_alignTop="@+id/numberOfGearsPlacedText"
         android:layout_alignParentEnd="true" />
 
-    <ToggleButton
-        android:text="Cross Baseline"
+    <Button
+        android:text="Crossed Baseline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/crossBaselineAuto"
-        tools:text="Cross Baseline"
-        android:textOff="Didn't Move"
-        android:textOn="Cross Baseline"
+        tools:text="Crossed Baseline"
+        android:onClick="crossBaseline"
         android:textSize="24sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginBottom="14dp"

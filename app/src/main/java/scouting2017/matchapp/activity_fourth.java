@@ -39,8 +39,8 @@ public class activity_fourth extends AppCompatActivity {
         myAppVariables.eventList.add(notes) ;
     }
     public void climbed (View view) {
-        TextView matchClimb = (TextView) findViewById(R.id.climbed);
-        matchClimb.setText(Boolean.toString(myAppVariables.climbed));
+        //TextView matchClimb = (TextView) findViewById(R.id.climbed);
+        //matchClimb.setText(Boolean.toString(myAppVariables.climbed));
         GameEvent climbed = new GameEvent () ;
         climbed.eventType = "climbed" ;
         climbed.eventValue = "1" ;

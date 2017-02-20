@@ -156,4 +156,12 @@ public class secondActivity extends AppCompatActivity {
         minusDroppedGearAuto.eventTime = System.currentTimeMillis() ;
         FirstActivity.myAppVariables.eventList.add(minusDroppedGearAuto) ;
     }
+    public void crossBaseline (View view) {
+        TextView numberOfDroppedGearsText = (TextView) findViewById(R.id.crossBaselineAuto) ;
+        GameEvent crossBaselineAuto = new GameEvent () ;
+        crossBaselineAuto.eventType = "crossBaselineAuto" ;
+        crossBaselineAuto.eventValue = "1" ;
+        crossBaselineAuto.eventTime = System.currentTimeMillis() ;
+        FirstActivity.myAppVariables.eventList.add(crossBaselineAuto) ;
+    }
 }
