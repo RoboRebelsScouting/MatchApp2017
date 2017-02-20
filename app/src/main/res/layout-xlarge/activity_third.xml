@@ -104,7 +104,7 @@
         android:text="20-30"
         android:layout_width="135dp"
         android:layout_height="93dp"
-        android:id="@+id/sfHighGoal"
+        android:id="@+id/fiveHighGoal"
         android:textSize="22sp"
         android:layout_row="7"
         android:layout_column="2" />
@@ -113,7 +113,7 @@
         android:text="10-20"
         android:layout_width="135dp"
         android:layout_height="93dp"
-        android:id="@+id/fHighGoal"
+        android:id="@+id/oneHighGoal"
         android:textSize="22sp"
         android:layout_row="7"
         android:layout_column="1" />
@@ -121,7 +121,7 @@
     <Button
         android:text="0-10"
         android:layout_height="93dp"
-        android:id="@+id/tfHighGoal"
+        android:id="@+id/zeroHighGoal"
         android:textSize="22sp"
         android:layout_marginBottom="39dp"
         android:layout_row="7"
@@ -131,7 +131,7 @@
     <Button
         android:text="20-30"
         android:layout_width="135dp"
-        android:id="@+id/sfLowGoal"
+        android:id="@+id/fiveLowGoal"
         android:textSize="22sp"
         android:layout_row="10"
         android:layout_column="2"
@@ -140,7 +140,7 @@
     <Button
         android:text="0-10"
         android:layout_height="93dp"
-        android:id="@+id/tfLowGoal"
+        android:id="@+id/zeroLowGoal"
         android:textSize="22sp"
         android:layout_row="10"
         android:layout_column="0"
@@ -240,7 +240,7 @@
         android:text="10-20"
         android:layout_width="135dp"
         android:layout_height="93dp"
-        android:id="@+id/fLowGoal"
+        android:id="@+id/oneLowGoal"
         android:textSize="22sp"
         android:layout_row="10"
         android:layout_column="1" />

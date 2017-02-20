@@ -21,24 +21,33 @@ public class FirstActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        myAppVariables = new Variables () ;
+        if (myAppVariables == null) {
+            myAppVariables = new Variables () ;
+        }
         setContentView(R.layout.activity_first);
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy");
         TextView eventNameText = (TextView) findViewById(R.id.enterEvent);
-
+        TextView scouterNameText = (TextView) findViewById(R.id.enterName);
+        TextView matchNumberText = (TextView) findViewById(R.id.enterMatch);
+        if (!myAppVariables.scouterName.equals("")) {
+            scouterNameText.setText(myAppVariables.scouterName);
+        }
+        if (!myAppVariables.scouterName.equals("")) {
+            matchNumberText.setText(Integer.toString(myAppVariables.matchNumber));
+        }
         try {
             long currentTimeInMillis = System.currentTimeMillis();
 
             if ((currentTimeInMillis >= sdf.parse("Feb 17 2017").getTime()) &&
                     (currentTimeInMillis < sdf.parse("Feb 19 2017").getTime() )) {
                 eventNameText.setText("Week_0");
-            } else if ((currentTimeInMillis >= sdf.parse("Mar 8 2017").getTime()) &&
+            } else if ((currentTimeInMillis >= sdf.parse("Feb 19 2017").getTime()) &&
                     (currentTimeInMillis < sdf.parse("Mar 12 2017").getTime() )) {
                 eventNameText.setText("WPI");
-            } else if ((currentTimeInMillis >= sdf.parse("Mar 23 2017").getTime()) &&
+            } else if ((currentTimeInMillis >= sdf.parse("Mar 13 2017").getTime()) &&
                     (currentTimeInMillis < sdf.parse("Mar 27 2017").getTime() )) {
                 eventNameText.setText("Bryant");
-            } else if ((currentTimeInMillis >= sdf.parse("Apr 4 2017").getTime()) &&
+            } else if ((currentTimeInMillis >= sdf.parse("Mar 28 2017").getTime()) &&
                     (currentTimeInMillis < sdf.parse("Apr 9 2017").getTime() )) {
                 eventNameText.setText("NE_Champs");
             }  else {

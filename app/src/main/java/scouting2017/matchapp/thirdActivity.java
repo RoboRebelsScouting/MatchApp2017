@@ -13,6 +13,7 @@ public class thirdActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
         getSupportActionBar().setTitle(Integer.toString(FirstActivity.myAppVariables.robotNumber));
+
     }
     public void toEndOfGame(View view) {
         Intent intent = new Intent(this, activity_fourth.class);
@@ -48,16 +49,6 @@ public class thirdActivity extends AppCompatActivity {
         hopperBallsTeleop.eventTime = System.currentTimeMillis() ;
         FirstActivity.myAppVariables.eventList.add(hopperBallsTeleop) ;
     }
-    public void groundBalls (View view) {
-        FirstActivity.myAppVariables.numberGroundBalls++;
-        TextView numberOfGroundBalls = (TextView) findViewById(R.id.numberOfGroundBalls);
-        numberOfGroundBalls.setText(Integer.toString(FirstActivity.myAppVariables.numberGroundBalls));
-        GameEvent groundBallsTeleop = new GameEvent () ;
-        groundBallsTeleop.eventType = "groundBalls" ;
-        groundBallsTeleop.eventValue = "1" ;
-        groundBallsTeleop.eventTime = System.currentTimeMillis() ;
-        FirstActivity.myAppVariables.eventList.add(groundBallsTeleop) ;
-    }
     public void hopperDumpedTeleop (View view) {
         FirstActivity.myAppVariables.numberHoppersDumpedTeleop++;
         TextView numberOfHoppersDumped = (TextView) findViewById(R.id.numberOfHoppersDumped);
@@ -68,30 +59,29 @@ public class thirdActivity extends AppCompatActivity {
         hopperDumpedTeleop.eventTime = System.currentTimeMillis() ;
         FirstActivity.myAppVariables.eventList.add(hopperDumpedTeleop) ;
     }
-    public void droppedGearTeleop (View view) {
-        FirstActivity.myAppVariables.numberOfGearsDropped++;
-        TextView droppedGearTeleop = (TextView) findViewById(R.id.droppedGearTeleop);
-        droppedGearTeleop.setText(Integer.toString(FirstActivity.myAppVariables.numberOfGearsDropped));
-        GameEvent droppedAGearTeleop = new GameEvent();
-        droppedAGearTeleop.eventType = "droppedGearTeleop";
-        droppedAGearTeleop.eventValue = "1";
-        droppedAGearTeleop.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(droppedAGearTeleop);
-    }
     public void gearPlacedTeleop (View view) {
-        FirstActivity.myAppVariables.numberOfGearsPlaced++;
-        TextView gearPlacedTeleop = (TextView) findViewById(R.id.gearPlacedTeleop);
-        gearPlacedTeleop.setText(Integer.toString(FirstActivity.myAppVariables.numberOfGearsPlaced));
-        GameEvent placedAGearTeleop = new GameEvent();
-        placedAGearTeleop.eventType = "gearPlacedTeleop";
-        placedAGearTeleop.eventValue = "1";
-        placedAGearTeleop.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(placedAGearTeleop);
+        FirstActivity.myAppVariables.numberGearsPlaced++;
+        TextView numberOfGearsPlaced = (TextView) findViewById(R.id.numberOfGearsPlaced);
+        numberOfGearsPlaced.setText(Integer.toString(FirstActivity.myAppVariables.numberGearsPlaced));
+        GameEvent gearPlacedTeleop = new GameEvent () ;
+        gearPlacedTeleop.eventType = "gearPlacedTeleop" ;
+        gearPlacedTeleop.eventValue = "1" ;
+        gearPlacedTeleop.eventTime = System.currentTimeMillis() ;
+        FirstActivity.myAppVariables.eventList.add(gearPlacedTeleop) ;
+    }
+    public void droppedGearTeleop (View view) {
+        FirstActivity.myAppVariables.numberDroppedGears++;
+        TextView numberOfDroppedGears = (TextView) findViewById(R.id.numberOfGearsDropped);
+        numberOfDroppedGears.setText(Integer.toString(FirstActivity.myAppVariables.numberDroppedGears));
+        GameEvent droppedGearTeleop = new GameEvent () ;
+        droppedGearTeleop.eventType = "droppedGearTeleop" ;
+        droppedGearTeleop.eventValue = "1" ;
+        droppedGearTeleop.eventTime = System.currentTimeMillis() ;
+        FirstActivity.myAppVariables.eventList.add(droppedGearTeleop) ;
     }
     public void approachBoiler (View view) {
         FirstActivity.myAppVariables.approachBoiler = true;
         TextView approachBoiler = (TextView) findViewById(R.id.approachBoiler);
-        approachBoiler.setText(Boolean.toString(FirstActivity.myAppVariables.approachBoiler));
         GameEvent approachedBoiler = new GameEvent();
         approachedBoiler.eventType = "approachBoiler";
         approachedBoiler.eventValue = "1";
@@ -101,7 +91,6 @@ public class thirdActivity extends AppCompatActivity {
     public void leaveBoiler (View view) {
         FirstActivity.myAppVariables.leaveBoiler = true;
         TextView leaveBoiler = (TextView) findViewById(R.id.leaveBoiler);
-        leaveBoiler.setText(Boolean.toString(FirstActivity.myAppVariables.leaveBoiler));
         GameEvent leftBoiler = new GameEvent();
         leftBoiler.eventType = "leaveBoiler";
         leftBoiler.eventValue = "1";
@@ -149,11 +138,11 @@ public class thirdActivity extends AppCompatActivity {
         FirstActivity.myAppVariables.eventList.add(minusHumanGear);
     }
     public void minusGearPlacedTeleop (View view) {
-        if (FirstActivity.myAppVariables.numberOfGearsPlaced > 0) {
-            FirstActivity.myAppVariables.numberOfGearsPlaced--;
+        if (FirstActivity.myAppVariables.numberGearsPlaced > 0) {
+            FirstActivity.myAppVariables.numberGearsPlaced--;
         }
-        TextView numberOfGearsPlaced = (TextView) findViewById(R.id.numberOfHumanGears);
-        numberOfGearsPlaced.setText(Integer.toString(FirstActivity.myAppVariables.numberOfGearsPlaced));
+        TextView numberOfGearsPlaced = (TextView) findViewById(R.id.numberOfGearsPlaced);
+        numberOfGearsPlaced.setText(Integer.toString(FirstActivity.myAppVariables.numberGearsPlaced));
         GameEvent minusGearPlacedTeleop = new GameEvent();
         minusGearPlacedTeleop.eventType = "gearPlacedTeleop";
         minusGearPlacedTeleop.eventValue = "1";
@@ -161,11 +150,11 @@ public class thirdActivity extends AppCompatActivity {
         FirstActivity.myAppVariables.eventList.add(minusGearPlacedTeleop);
     }
     public void minusDroppedGearTeleop (View view) {
-        if (FirstActivity.myAppVariables.numberOfGearsDropped > 0) {
-            FirstActivity.myAppVariables.numberOfGearsDropped--;
+        if (FirstActivity.myAppVariables.numberDroppedGears > 0) {
+            FirstActivity.myAppVariables.numberDroppedGears--;
         }
         TextView numberOfGearsDropped = (TextView) findViewById(R.id.numberOfGearsDropped);
-        numberOfGearsDropped.setText(Integer.toString(FirstActivity.myAppVariables.numberOfGearsDropped));
+        numberOfGearsDropped.setText(Integer.toString(FirstActivity.myAppVariables.numberDroppedGears));
         GameEvent minusDroppedGearTeleop = new GameEvent();
         minusDroppedGearTeleop.eventType = "droppedGearTeleop";
         minusDroppedGearTeleop.eventValue = "1";
@@ -183,18 +172,6 @@ public class thirdActivity extends AppCompatActivity {
         minusHopperTeleop.eventValue = "1" ;
         minusHopperTeleop.eventTime = System.currentTimeMillis() ;
         FirstActivity.myAppVariables.eventList.add(minusHopperTeleop) ;
-    }
-    public void minusGroundBalls (View view) {
-        if (FirstActivity.myAppVariables.numberGroundBalls > 0) {
-            FirstActivity.myAppVariables.numberGroundBalls--;
-        }
-        TextView numberOfGroundBalls = (TextView) findViewById(R.id.numberOfGroundBalls);
-        numberOfGroundBalls.setText(Integer.toString(FirstActivity.myAppVariables.numberGroundBalls));
-        GameEvent minusGroundBalls = new GameEvent () ;
-        minusGroundBalls.eventType = "groundBalls" ;
-        minusGroundBalls.eventValue = "1" ;
-        minusGroundBalls.eventTime = System.currentTimeMillis() ;
-        FirstActivity.myAppVariables.eventList.add(minusGroundBalls) ;
     }
     public void minusHopperBalls  (View view) {
         if (FirstActivity.myAppVariables.numberHopperBalls > 0) {

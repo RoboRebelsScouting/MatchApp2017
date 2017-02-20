@@ -46,22 +46,12 @@ public class secondActivity extends AppCompatActivity {
         autoTimer.removeCallbacks(updateTimer);
         startActivity (intent);
     }
-    public void gearPickedUp (View view) {
-        FirstActivity.myAppVariables.numberGearsPickedUpAuto ++;
-        TextView numberOfGearsPickedUpText = (TextView)findViewById(R.id.numberOfGearsPickedUpText);
-        numberOfGearsPickedUpText.setText(Integer.toString (FirstActivity.myAppVariables.numberGearsPickedUpAuto));
-        GameEvent gearPickedUpAuto = new GameEvent () ;
-        gearPickedUpAuto.eventType = "gearPickedUp" ;
-        gearPickedUpAuto.eventValue = "1" ;
-        gearPickedUpAuto.eventTime = System.currentTimeMillis() ;
-        FirstActivity.myAppVariables.eventList.add(gearPickedUpAuto) ;
-    }
     public void gearPlaced (View view) {
         FirstActivity.myAppVariables.numberGearsPlacedAuto ++;
         TextView numberOfGearsPlacedText = (TextView) findViewById(R.id.numberOfGearsPlacedText) ;
         numberOfGearsPlacedText.setText(Integer.toString (FirstActivity.myAppVariables.numberGearsPlacedAuto));
         GameEvent gearPlacedAuto = new GameEvent () ;
-        gearPlacedAuto.eventType = "gearPlaced" ;
+        gearPlacedAuto.eventType = "gearPlacedAuto" ;
         gearPlacedAuto.eventValue = "1" ;
         gearPlacedAuto.eventTime = System.currentTimeMillis() ;
         FirstActivity.myAppVariables.eventList.add(gearPlacedAuto) ;
@@ -70,18 +60,18 @@ public class secondActivity extends AppCompatActivity {
         FirstActivity.myAppVariables.numberDroppedGearsAuto ++;
         TextView numberOfDroppedGearsText = (TextView) findViewById(R.id.numberOfDroppedGearsText) ;
         numberOfDroppedGearsText.setText(Integer.toString (FirstActivity.myAppVariables.numberDroppedGearsAuto));
-        GameEvent droppedGearsAuto = new GameEvent () ;
-        droppedGearsAuto.eventType = "droppedGear" ;
-        droppedGearsAuto.eventValue = "1" ;
-        droppedGearsAuto.eventTime = System.currentTimeMillis() ;
-        FirstActivity.myAppVariables.eventList.add(droppedGearsAuto) ;
+        GameEvent droppedGearAuto = new GameEvent () ;
+        droppedGearAuto.eventType = "droppedGearAuto" ;
+        droppedGearAuto.eventValue = "1" ;
+        droppedGearAuto.eventTime = System.currentTimeMillis() ;
+        FirstActivity.myAppVariables.eventList.add(droppedGearAuto) ;
     }
     public void lowGoal (View view) {
         FirstActivity.myAppVariables.numberLowGoalsAuto ++;
         TextView numberOfLowGoalsText = (TextView) findViewById(R.id.numberOfLowGoalsText);
         numberOfLowGoalsText.setText(Integer.toString(FirstActivity.myAppVariables.numberLowGoalsAuto));
         GameEvent lowGoalAuto = new GameEvent () ;
-        lowGoalAuto.eventType = "lowGoal" ;
+        lowGoalAuto.eventType = "lowGoalAuto" ;
         lowGoalAuto.eventValue = "1" ;
         lowGoalAuto.eventTime = System.currentTimeMillis() ;
         FirstActivity.myAppVariables.eventList.add(lowGoalAuto) ;
@@ -91,7 +81,7 @@ public class secondActivity extends AppCompatActivity {
         TextView numberOfHighGoalsText = (TextView) findViewById(R.id.numberOfHighGoalsText);
         numberOfHighGoalsText.setText(Integer.toString(FirstActivity.myAppVariables.numberHighGoalsAuto));
         GameEvent highGoalAuto = new GameEvent () ;
-        highGoalAuto.eventType = "highGoal" ;
+        highGoalAuto.eventType = "highGoalAuto" ;
         highGoalAuto.eventValue = "1" ;
         highGoalAuto.eventTime = System.currentTimeMillis() ;
         FirstActivity.myAppVariables.eventList.add(highGoalAuto) ;
@@ -125,7 +115,7 @@ public class secondActivity extends AppCompatActivity {
         TextView numberOfLowGoalsText = (TextView) findViewById(R.id.numberOfLowGoalsText);
         numberOfLowGoalsText.setText(Integer.toString(FirstActivity.myAppVariables.numberLowGoalsAuto));
         GameEvent minusLowGoalAuto = new GameEvent();
-        minusLowGoalAuto.eventType = "lowGoal";
+        minusLowGoalAuto.eventType = "lowGoalAuto";
         minusLowGoalAuto.eventValue = "1";
         minusLowGoalAuto.eventTime = System.currentTimeMillis();
         FirstActivity.myAppVariables.eventList.add(minusLowGoalAuto);
@@ -137,22 +127,10 @@ public class secondActivity extends AppCompatActivity {
         TextView numberOfHighGoalsText = (TextView) findViewById(R.id.numberOfHighGoalsText);
         numberOfHighGoalsText.setText(Integer.toString(FirstActivity.myAppVariables.numberHighGoalsAuto));
         GameEvent minusHighGoalAuto = new GameEvent () ;
-        minusHighGoalAuto.eventType = "highGoal" ;
+        minusHighGoalAuto.eventType = "highGoalAuto" ;
         minusHighGoalAuto.eventValue = "1" ;
         minusHighGoalAuto.eventTime = System.currentTimeMillis() ;
         FirstActivity.myAppVariables.eventList.add(minusHighGoalAuto) ;
-    }
-    public void minusGearPickedUpAuto (View view) {
-        if (FirstActivity.myAppVariables.numberGearsPickedUpAuto > 0) {
-            FirstActivity.myAppVariables.numberGearsPickedUpAuto-- ;
-        }
-        TextView numberOfGearsPickedUpText = (TextView) findViewById(R.id.numberOfGearsPickedUpText);
-        numberOfGearsPickedUpText.setText(Integer.toString(FirstActivity.myAppVariables.numberGearsPickedUpAuto));
-        GameEvent minusGearPickedUpAuto = new GameEvent();
-        minusGearPickedUpAuto.eventType = "gearPickedUp";
-        minusGearPickedUpAuto.eventValue = "1";
-        minusGearPickedUpAuto.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(minusGearPickedUpAuto);
     }
     public void minusGearPlacedAuto (View view) {
         if (FirstActivity.myAppVariables.numberGearsPlacedAuto > 0) {
@@ -161,7 +139,7 @@ public class secondActivity extends AppCompatActivity {
         TextView numberOfGearsPlacedText = (TextView) findViewById(R.id.numberOfGearsPlacedText) ;
         numberOfGearsPlacedText.setText(Integer.toString (FirstActivity.myAppVariables.numberGearsPlacedAuto));
         GameEvent minusGearPlacedAuto = new GameEvent () ;
-        minusGearPlacedAuto.eventType = "gearPlaced" ;
+        minusGearPlacedAuto.eventType = "gearPlacedAuto" ;
         minusGearPlacedAuto.eventValue = "1" ;
         minusGearPlacedAuto.eventTime = System.currentTimeMillis() ;
         FirstActivity.myAppVariables.eventList.add(minusGearPlacedAuto) ;
@@ -170,12 +148,12 @@ public class secondActivity extends AppCompatActivity {
         if (FirstActivity.myAppVariables.numberDroppedGearsAuto > 0) {
             FirstActivity.myAppVariables.numberDroppedGearsAuto--;
         }
-        TextView numberOfGearsPlacedText = (TextView) findViewById(R.id.numberOfDroppedGearsText) ;
-        numberOfGearsPlacedText.setText(Integer.toString (FirstActivity.myAppVariables.numberDroppedGearsAuto));
-        GameEvent minusDroppedGearsAuto = new GameEvent () ;
-        minusDroppedGearsAuto.eventType = "droppedGear" ;
-        minusDroppedGearsAuto.eventValue = "1" ;
-        minusDroppedGearsAuto.eventTime = System.currentTimeMillis() ;
-        FirstActivity.myAppVariables.eventList.add(minusDroppedGearsAuto) ;
+        TextView numberOfDroppedGearsText = (TextView) findViewById(R.id.numberOfDroppedGearsText) ;
+        numberOfDroppedGearsText.setText(Integer.toString (FirstActivity.myAppVariables.numberDroppedGearsAuto));
+        GameEvent minusDroppedGearAuto = new GameEvent () ;
+        minusDroppedGearAuto.eventType = "droppedGearAuto" ;
+        minusDroppedGearAuto.eventValue = "1" ;
+        minusDroppedGearAuto.eventTime = System.currentTimeMillis() ;
+        FirstActivity.myAppVariables.eventList.add(minusDroppedGearAuto) ;
     }
 }

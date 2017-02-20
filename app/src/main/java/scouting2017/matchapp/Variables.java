@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static scouting2017.matchapp.R.id.numberOfGearsPickedUpText;
 import static scouting2017.matchapp.R.id.numberOfGearsPlacedText;
 import static scouting2017.matchapp.R.id.numberOfGroundBalls;
 import static scouting2017.matchapp.R.id.numberOfGroundGears;
@@ -28,7 +27,8 @@ import static scouting2017.matchapp.R.id.numberOfLowGoalsText;
  */
 
 public class Variables {
-    public int numberGearsPickedUpAuto;
+
+    //public Intent firstActivity;
     public int numberGearsPlacedAuto;
     public int numberDroppedGearsAuto;
     public int numberLowGoalsAuto;
@@ -36,11 +36,10 @@ public class Variables {
     public int numberHoppersDumpedAuto;
     public int numberHumanGears;
     public int numberGroundGears;
-    public int numberOfGearsPlaced;
-    public int numberOfGearsDropped;
+    public int numberGearsPlaced;
+    public int numberDroppedGears;
     public int numberHopperBalls;
     public int numberHoppersDumpedTeleop;
-    public int numberGroundBalls;
     public List<GameEvent> eventList;
     public long startAutoTime;
     public long autoTime;
@@ -58,7 +57,6 @@ public class Variables {
         reset();
     }
     public void reset() {
-        numberGearsPickedUpAuto = 0;
         numberGearsPlacedAuto = 0;
         numberDroppedGearsAuto = 0;
         numberLowGoalsAuto = 0;
@@ -66,13 +64,15 @@ public class Variables {
         numberHoppersDumpedAuto = 0;
         numberHumanGears = 0;
         numberGroundGears = 0;
-        numberOfGearsPlaced = 0;
-        numberOfGearsDropped = 0;
+        numberGearsPlaced = 0;
+        numberDroppedGears = 0;
         numberHopperBalls = 0;
         numberHoppersDumpedTeleop = 0;
-        numberGroundBalls = 0;
         droppedGearTeleop = 0;
         eventList = new ArrayList<GameEvent>();
+        scouterName = new String () ;
+        competitionName = new String() ;
+        matchNumber = 0 ;
     }
 
     /* some random code Olivia has
@@ -94,7 +94,7 @@ public class Variables {
 
     void CSVCreate(Activity theActivity) {
         String fileName = competitionName + "-" + matchNumber + "-" + robotNumber + "-" + scouterName.trim() + "-" +
-                ".CSV";
+                ".csv";
         File directory = getAlbumStorageDir("/FRC2017");
         File file = new File(directory,fileName);
         try {

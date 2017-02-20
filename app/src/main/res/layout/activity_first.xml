@@ -17,17 +17,17 @@
         android:id="@+id/robot"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="32sp"
-        android:layout_alignBaseline="@+id/enterRobot"
-        android:layout_alignBottom="@+id/enterRobot"
         android:layout_alignParentStart="true"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="normal|bold"
-        android:layout_alignEnd="@+id/match" />
+        android:layout_alignEnd="@+id/match"
+        android:layout_alignBottom="@+id/enterRobot"
+        android:layout_alignTop="@+id/enterRobot" />
 
     <TextView
         android:text="Scouter Name:"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:id="@+id/Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="32sp"
@@ -44,15 +44,16 @@
         android:id="@+id/match"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="32sp"
-        android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="normal|bold"
-        android:layout_alignEnd="@+id/Event" />
+        android:layout_alignEnd="@+id/Event"
+        android:layout_above="@+id/enterRobot"
+        android:layout_alignTop="@+id/enterMatch" />
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:inputType="number"
         android:ems="10"
         android:id="@+id/enterRobot"
@@ -79,8 +80,9 @@
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:inputType="textPersonName"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         android:ems="10"
         android:id="@+id/enterName"
         android:hint="Enter Name"
@@ -89,21 +91,8 @@
         android:layout_alignParentEnd="true"
         android:textColor="@color/colorPrimaryDark" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/enterEvent"
-        android:textSize="24sp"
-        android:layout_marginTop="95dp"
-        android:layout_below="@+id/enterName"
-        android:layout_alignParentEnd="true"
-        android:text="WPI"
-        android:textColor="@color/colorPrimaryDark" />
-
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
         android:id="@+id/enterMatch"
@@ -112,21 +101,8 @@
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
         android:textColor="@color/colorPrimaryDark"
-        android:maxLength="3" />
-
-    <TextView
-        android:text="Event:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Event"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="32sp"
-        android:layout_alignBaseline="@+id/enterEvent"
-        android:layout_alignBottom="@+id/enterEvent"
-        android:layout_alignParentStart="true"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold"
-        android:layout_alignEnd="@+id/Name" />
+        android:maxLength="3"
+        android:layout_height="70dp" />
 
     <TextView
         android:text="WARNING: THIS STARTS A TIMER"
@@ -142,5 +118,31 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="15dp"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:ems="10"
+        android:id="@+id/enterEvent"
+        android:textSize="24sp"
+        android:layout_marginTop="62dp"
+        android:text="WPI"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@+id/enterName"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Event:"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:id="@+id/Event"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="32sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold"
+        android:textAlignment="viewStart"
+        android:layout_alignTop="@+id/enterEvent"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/Name" />
 
 </RelativeLayout>

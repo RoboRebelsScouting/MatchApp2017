@@ -14,14 +14,20 @@ public class activity_fourth extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fourth);
+        getSupportActionBar().setTitle(Integer.toString(FirstActivity.myAppVariables.robotNumber));
     }
     @Override
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
         Intent intent = new Intent(this, FirstActivity.class) ;
-        String competitionNameInfo = myAppVariables.competitionName;
-        myAppVariables.reset();
-        myAppVariables.competitionName = competitionNameInfo;
+        String competitionNameInfo = FirstActivity.myAppVariables.competitionName;
+        String scouterNameInfo = FirstActivity.myAppVariables.scouterName;
+        Integer matchNumberInfo = FirstActivity.myAppVariables.matchNumber;
+        FirstActivity.myAppVariables.reset();
+        FirstActivity.myAppVariables.competitionName = competitionNameInfo;
+        FirstActivity.myAppVariables.scouterName = scouterNameInfo;
+        FirstActivity.myAppVariables.matchNumber = matchNumberInfo + 1;
         startActivity(intent);
+
     }
     public void notes (View view) {
         TextView matchNotes = (TextView) findViewById(R.id.notes);
