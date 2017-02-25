@@ -10,61 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="scouting2017.matchapp.FirstActivity">
 
-    <TextView
-        android:text="Robot #:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/robot"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="32sp"
-        android:layout_alignParentStart="true"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold"
-        android:layout_alignEnd="@+id/match"
-        android:layout_alignBottom="@+id/enterRobot"
-        android:layout_alignTop="@+id/enterRobot" />
-
-    <TextView
-        android:text="Scouter Name:"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:id="@+id/Name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="32sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="80dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold" />
-
-    <TextView
-        android:text="Match #:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/match"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="32sp"
-        android:layout_alignParentStart="true"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold"
-        android:layout_alignEnd="@+id/Event"
-        android:layout_above="@+id/enterRobot"
-        android:layout_alignTop="@+id/enterMatch" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/enterRobot"
-        android:hint="Enter Robot #"
-        android:textSize="24sp"
-        android:layout_marginTop="104dp"
-        android:layout_below="@+id/enterMatch"
-        android:layout_alignStart="@+id/enterMatch"
-        android:textColor="@color/colorPrimaryDark"
-        android:maxLength="4"/>
-
     <Button
         android:text="Start Match"
         android:layout_width="wrap_content"
@@ -91,19 +36,6 @@
         android:layout_alignParentEnd="true"
         android:textColor="@color/colorPrimaryDark" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/enterMatch"
-        android:hint="Enter Match #"
-        android:textSize="24sp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"
-        android:textColor="@color/colorPrimaryDark"
-        android:maxLength="3"
-        android:layout_height="70dp" />
-
     <TextView
         android:text="WARNING: THIS STARTS A TIMER"
         android:layout_width="wrap_content"
@@ -120,16 +52,59 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
+        android:text="Robot #:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/robot"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="32sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/match"
+        android:layout_alignBottom="@+id/enterRobot"
+        android:layout_alignTop="@+id/enterRobot" />
+
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="70dp"
+        android:inputType="number"
         android:ems="10"
-        android:id="@+id/enterEvent"
+        android:id="@+id/enterRobot"
+        android:hint="Enter Robot #"
         android:textSize="24sp"
-        android:layout_marginTop="62dp"
-        android:text="WPI"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_below="@+id/enterName"
-        android:layout_alignParentEnd="true" />
+        android:maxLength="4"
+        android:layout_above="@+id/textView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="42dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/enterMatch"
+        android:hint="Enter Match #"
+        android:textSize="24sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:maxLength="3"
+        android:layout_height="70dp"
+        android:layout_above="@+id/robot"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="82dp" />
+
+    <TextView
+        android:text="Scouter Name:"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:id="@+id/Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="32sp"
+        android:layout_marginTop="110dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="Event:"
@@ -144,5 +119,48 @@
         android:layout_alignTop="@+id/enterEvent"
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/Name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:ems="10"
+        android:id="@+id/enterEvent"
+        android:textSize="24sp"
+        android:layout_marginTop="76dp"
+        android:text="WPI"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@+id/enterName"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Match #:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/match"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="32sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold"
+        android:layout_alignTop="@+id/enterMatch"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/allianceColor"
+        android:layout_alignBottom="@+id/enterMatch" />
+
+    <ToggleButton
+        android:text="ToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/allianceColor"
+        android:textOff="Red Alliance"
+        android:textOn="Blue Alliance"
+        android:textSize="25sp"
+        android:onClick="allianceColor"
+        android:layout_marginBottom="24dp"
+        android:textColor="@android:color/white"
+        android:textColorLink="?attr/actionModeSplitBackground"
+        android:textColorHint="@android:color/holo_red_dark"
+        android:background="@android:color/holo_red_dark"
+        android:layout_above="@+id/enterName"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

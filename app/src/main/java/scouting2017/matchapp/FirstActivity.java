@@ -2,14 +2,17 @@
 package scouting2017.matchapp;
 
 import android.content.Intent;
+import android.graphics.LightingColorFilter;
 import android.net.ParseException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import java.text.SimpleDateFormat;
 
@@ -19,6 +22,8 @@ public class FirstActivity extends AppCompatActivity {
 
     public static Variables myAppVariables ;
     @Override
+    public void onBackPressed() {
+    }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (myAppVariables == null) {
@@ -81,7 +86,28 @@ public class FirstActivity extends AppCompatActivity {
         }
         FirstActivity.myAppVariables.scouterName = f.getText().toString();
         Intent intent = new Intent(this, secondActivity.class);
-        myAppVariables.startAutoTime = System.currentTimeMillis() ;
+        myAppVariables.startAutoTime = System.currentTimeMillis();
         startActivity(intent);
+    }
+    public void allianceColor(View view) {
+        ToggleButton allianceColor = (ToggleButton) findViewById(R.id.allianceColor);
+        if (allianceColor.isChecked()) {
+            //RED
+            allianceColor.getBackground().setColorFilter(new LightingColorFilter(0xFF0000FF, 0xFF0000FF));
+        } else {
+            //BLUE
+            allianceColor.getBackground().setColorFilter(new LightingColorFilter (0xFFFF0000,0xFFFF0000));
+        }
+        String allianceColorButtonText = allianceColor.getText().toString();
+        if (allianceColorButtonText.equals("Blue Alliance")) {
+            FirstActivity.myAppVariables.allianceColor = true ;
+        } else {
+            FirstActivity.myAppVariables.allianceColor = false ;
+        }
+        GameEvent colorOfAlliance= new GameEvent();
+        colorOfAlliance.eventType = "allianceColor";
+        colorOfAlliance.eventValue = "1";
+        colorOfAlliance.eventTime = System.currentTimeMillis();
+        FirstActivity.myAppVariables.eventList.add(colorOfAlliance);
     }
 }

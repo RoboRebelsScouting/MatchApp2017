@@ -1,6 +1,8 @@
 package scouting2017.matchapp;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.SystemClock;
@@ -15,14 +17,21 @@ import android.widget.TextView;
 public class secondActivity extends AppCompatActivity {
     public Handler autoTimer = new Handler() ;
     @Override
+    public void onBackPressed() {
+    }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        FirstActivity.myAppVariables.autoTime = 15000 ;
+        FirstActivity.myAppVariables.autoTime = 17000 ;
         TextView autoTimerText = (TextView) findViewById(R.id.autoTimerText) ;
         autoTimerText.setText(String.valueOf (FirstActivity.myAppVariables.autoTime/1000));
         autoTimer.postDelayed(updateTimer, 1000);
         getSupportActionBar().setTitle(Integer.toString(FirstActivity.myAppVariables.robotNumber));
+        if (FirstActivity.myAppVariables.allianceColor == true) {
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.BLUE));
+        } else {
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.RED));
+        }
     }
     private final Runnable updateTimer = new Runnable () {
         public void run() {
@@ -87,7 +96,11 @@ public class secondActivity extends AppCompatActivity {
         FirstActivity.myAppVariables.eventList.add(highGoalAuto) ;
     }
     public void hopperDumpedAuto (View view) {
-        FirstActivity.myAppVariables.numberHoppersDumpedAuto ++;
+        if (FirstActivity.myAppVariables.numberHoppersDumpedAuto < 5) {
+            FirstActivity.myAppVariables.numberHoppersDumpedAuto++;
+        } else {
+            return;
+        }
         TextView numberOfHoppersDumpedText = (TextView) findViewById(R.id.numberOfHoppersDumpedText);
         numberOfHoppersDumpedText.setText(Integer.toString(FirstActivity.myAppVariables.numberHoppersDumpedAuto));
         GameEvent hopperDumpedAuto = new GameEvent () ;
@@ -157,7 +170,6 @@ public class secondActivity extends AppCompatActivity {
         FirstActivity.myAppVariables.eventList.add(minusDroppedGearAuto) ;
     }
     public void crossBaseline (View view) {
-        TextView numberOfDroppedGearsText = (TextView) findViewById(R.id.crossBaselineAuto) ;
         GameEvent crossBaselineAuto = new GameEvent () ;
         crossBaselineAuto.eventType = "crossBaselineAuto" ;
         crossBaselineAuto.eventValue = "1" ;

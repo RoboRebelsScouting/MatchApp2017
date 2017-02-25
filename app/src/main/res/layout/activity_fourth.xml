@@ -10,43 +10,30 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="scouting2017.matchapp.activity_fourth">
 
-    <ToggleButton
-        android:text="ToggleButton"
+    <TextView
+        android:text="End Of Game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/climbed"
-        android:textOff="Didn't Climb"
-        android:textOn="Climbed"
-        android:textSize="30sp"
-        android:onClick="climbed"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:id="@+id/textView3"
         android:textColor="@color/colorPrimaryDark"
+        android:textSize="36sp"
         android:textStyle="normal|bold" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_alignParentStart="true"
-        android:id="@+id/notes"
-        android:layout_alignParentEnd="true"
-        android:textSize="24sp"
-        android:layout_below="@+id/notesLabel"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_above="@+id/submitButton" />
 
     <TextView
-        android:text="Notes:"
+        android:text='Send bluetooth file to "SCOUTINGLAPTOP2"'
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/notesLabel"
-        android:textSize="30sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_below="@+id/climbed"
-        android:layout_alignParentStart="true"
-        android:textStyle="normal|bold" />
+        android:id="@+id/textView2"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="normal|bold"
+        android:textAllCaps="false"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_marginTop="37dp"
+        android:layout_below="@+id/broken"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="Submit"
@@ -57,7 +44,37 @@
         android:onClick="createCSV"
         android:textStyle="normal|bold"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true" />
+
+    <ToggleButton
+        android:text="ToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/climbed"
+        android:textOff="Didn't Climb"
+        android:textOn="Climbed"
+        android:textSize="30sp"
+        android:onClick="climbed"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/broken"
+        android:textOff="Not Broken"
+        android:textOn="Broken"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        android:onClick="broken"
+        android:layout_below="@+id/climbed"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
 

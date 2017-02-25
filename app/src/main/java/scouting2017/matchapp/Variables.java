@@ -43,15 +43,21 @@ public class Variables {
     public List<GameEvent> eventList;
     public long startAutoTime;
     public long autoTime;
+    public long startTeleopTime;
+    public long teleopTime;
     public boolean approachBoiler;
     public boolean leaveBoiler;
     public int robotNumber;
+    public boolean allianceColor;
     public int matchNumber;
     public String scouterName;
     public String competitionName;
     public String notes;
     public boolean climbed;
     public int droppedGearTeleop;
+    public boolean broken;
+    public int numberHighGoalsTeleop;
+    public int numberLowGoalsTeleop;
 
     public Variables() {
         reset();
@@ -73,6 +79,8 @@ public class Variables {
         scouterName = new String () ;
         competitionName = new String() ;
         matchNumber = 0 ;
+        numberHighGoalsTeleop = 0;
+        numberLowGoalsTeleop = 0;
     }
 
     /* some random code Olivia has
