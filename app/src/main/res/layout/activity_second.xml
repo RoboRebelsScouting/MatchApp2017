@@ -32,46 +32,149 @@
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="normal|bold" />
 
-    <Button
-        android:layout_width="80dp"
-        android:layout_height="70dp"
-        android:id="@+id/minusGearPlacedAuto"
-        android:text="—"
-        android:onClick="minusGearPlacedAuto"
-        android:textColor="?attr/actionModeSplitBackground"
-        android:textSize="18sp"
+    <ToggleButton
+        android:text="Crossed Baseline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/crossBaselineAuto"
+        tools:text="Crossed Baseline"
+        android:onClick="crossBaseline"
+        android:textSize="24sp"
+        android:textColor="@color/colorPrimaryDark"
         android:textStyle="normal|bold"
-        android:layout_above="@+id/droppedGearAuto"
-        android:layout_alignTop="@+id/numberOfGearsPlacedText"
-        android:layout_alignParentEnd="true" />
+        android:textOff="Didn't Move"
+        android:textOn="Crossed Baseline"
+        android:layout_above="@+id/toTeleop"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="5"
+        android:onClick = "lowGoalAuto"
+        android:layout_height="70dp"
+        android:layout_alignTop="@+id/oneLowGoalAuto"
+        android:layout_toEndOf="@+id/oneLowGoalAuto"
+        android:id="@+id/fiveLowGoalAuto"
+        android:layout_width="95dp"
+        android:textSize="30sp"
+        android:textColor="@android:color/holo_red_dark" />
+
+    <Button
+        android:text="5"
+        android:onClick = "highGoalAuto"
+        android:layout_width="95dp"
+        android:layout_height="70dp"
+        android:layout_alignTop="@+id/oneHighGoalAuto"
+        android:layout_toEndOf="@+id/oneHighGoalAuto"
+        android:id="@+id/fiveHighGoalAuto"
+        android:textSize="30sp"
+        android:textColor="@android:color/holo_red_dark" />
+
+    <Button
+        android:text="1"
+        android:onClick = "lowGoalAuto"
+        android:layout_height="70dp"
+        android:id="@+id/oneLowGoalAuto"
+        android:layout_alignBottom="@+id/zeroLowGoalAuto"
+        android:layout_toEndOf="@+id/zeroLowGoalAuto"
+        android:layout_width="95dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp" />
+
+    <Button
+        android:text="10"
+        android:onClick = "lowGoalAuto"
+        android:layout_height="70dp"
+        android:id="@+id/tenLowGoalAuto"
+        android:layout_alignBottom="@+id/fiveLowGoalAuto"
+        android:layout_toEndOf="@+id/fiveLowGoalAuto"
+        android:layout_alignTop="@+id/fiveLowGoalAuto"
+        android:layout_width="95dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp" />
 
     <TextView
         android:text="0"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/numberOfDroppedGearsText"
-        android:textSize="36sp"
+        android:id="@+id/numberOfHighGoalsAuto"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="60sp"
         android:textColor="@android:color/holo_red_dark"
-        android:layout_alignBottom="@+id/droppedGearAuto"
-        android:layout_alignStart="@+id/numberOfHighGoalsText"
-        android:layout_alignTop="@+id/droppedGearAuto"
-        android:layout_alignEnd="@+id/numberOfGearsPlacedText"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:layout_height="70dp"
+        android:layout_alignTop="@+id/tenHighGoalAuto"
+        android:layout_toEndOf="@+id/tenHighGoalAuto"
+        android:layout_width="110dp" />
 
     <Button
-        android:text="—"
-        android:layout_width="80dp"
+        android:text="1"
+        android:onClick = "highGoalAuto"
+        android:layout_width="95dp"
         android:layout_height="70dp"
-        android:id="@+id/minusDroppedGearAuto"
-        android:onClick="minusDroppedGearAuto"
+        android:id="@+id/oneHighGoalAuto"
+        android:layout_alignBottom="@+id/zeroHighGoalAuto"
+        android:layout_toEndOf="@+id/zeroHighGoalAuto"
+        android:layout_alignTop="@+id/zeroHighGoalAuto"
+        android:textSize="30sp"
+        android:textColor="@android:color/holo_red_dark" />
+
+    <Button
+        android:text="Hopper Dumped"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hopperDumpedAuto"
+        android:onClick="hopperDumpedAuto"
+        android:textSize="28sp"
+        android:textColor="?attr/actionModeSplitBackground"
+        android:textStyle="normal|bold"
+        android:layout_alignTop="@+id/numberOfHoppersDumpedText"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="0"
+        android:onClick = "lowGoalAuto"
+        android:layout_height="70dp"
+        android:id="@+id/zeroLowGoalAuto"
+        android:layout_width="95dp"
+        android:layout_below="@+id/hopperDumpedAuto"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="77dp"
+        android:textSize="30sp"
+        android:textColor="@android:color/holo_red_dark" />
+
+    <Button
+        android:text="0"
+        android:onClick = "highGoalAuto"
+        android:layout_height="70dp"
+        android:id="@+id/zeroHighGoalAuto"
+        android:layout_width="95dp"
+        android:layout_marginBottom="44dp"
+        android:layout_above="@+id/crossBaselineAuto"
+        android:layout_alignParentStart="true"
+        android:textSize="30sp"
+        android:textColor="@android:color/holo_red_dark" />
+
+    <Button
+        android:text="10"
+        android:onClick = "highGoalAuto"
+        android:layout_width="95dp"
+        android:layout_height="70dp"
+        android:id="@+id/tenHighGoalAuto"
+        android:textSize="30sp"
+        android:layout_alignBottom="@+id/fiveHighGoalAuto"
+        android:layout_toEndOf="@+id/fiveHighGoalAuto"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_below="@+id/highGoalAuto" />
+
+    <TextView
+        android:text="Low Goals"
+        android:layout_width="150dp"
+        android:id="@+id/lowGoalAuto"
+        android:textSize="30sp"
         android:textStyle="normal|bold"
         android:textColor="@color/colorPrimaryDark"
         android:textAlignment="center"
-        android:textSize="18sp"
-        android:layout_alignBottom="@+id/numberOfDroppedGearsText"
-        android:layout_alignStart="@+id/minusGearPlacedAuto"
-        android:layout_alignTop="@+id/numberOfDroppedGearsText"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/fiveLowGoalAuto"
+        android:layout_alignEnd="@+id/toTeleop"
+        android:layout_height="40dp" />
 
     <TextView
         android:text="Autonomous"
@@ -81,60 +184,20 @@
         android:textSize="36sp"
         android:textColor="?attr/actionModeSplitBackground"
         android:textStyle="normal|bold"
-        android:layout_alignEnd="@+id/crossBaselineAuto"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="0"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/numberOfGearsPlacedText"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="36sp"
-        android:textColor="@android:color/holo_red_dark"
-        android:textAlignment="center"
-        android:layout_alignTop="@+id/gearPlacedAuto"
-        android:layout_alignEnd="@+id/autoLabel" />
-
-    <Button
-        android:text="Dropped Gear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/droppedGearAuto"
-        android:onClick="droppedGear"
-        android:textSize="28sp"
+        android:text="High Goals"
+        android:layout_width="150dp"
+        android:id="@+id/highGoalAuto"
+        android:textSize="30sp"
         android:textStyle="normal|bold"
-        android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="63dp"
-        android:layout_below="@+id/gearPlacedAuto"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/hopperDumpedAuto" />
-
-    <Button
-        android:text="—"
-        android:layout_width="80dp"
-        android:layout_height="70dp"
-        android:id="@+id/minusHighGoalAuto"
-        android:onClick="minusHighGoalAuto"
-        android:textColor="?attr/actionModeSplitBackground"
-        android:textSize="18sp"
-        android:textStyle="normal|bold"
-        android:layout_alignBottom="@+id/numberOfHighGoalsText"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/numberOfHighGoalsText" />
-
-    <TextView
-        android:text="0"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/numberOfHighGoalsText"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="36sp"
-        android:textColor="@android:color/holo_red_dark"
         android:textAlignment="center"
-        android:layout_alignTop="@+id/highGoalAuto"
-        android:layout_alignStart="@+id/numberOfLowGoalsText" />
+        android:layout_above="@+id/fiveHighGoalAuto"
+        android:layout_alignStart="@+id/toTeleop"
+        android:layout_height="40dp" />
 
     <Button
         android:text="Gear Placed"
@@ -147,114 +210,134 @@
         android:textStyle="normal|bold"
         android:layout_below="@+id/autoTimerText"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_alignEnd="@+id/droppedGearAuto" />
 
-    <TextView
-        android:text="0"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/numberOfLowGoalsText"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="36sp"
-        android:textColor="@android:color/holo_red_dark"
+    <Button
+        android:text="Dropped Gear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/droppedGearAuto"
+        android:onClick="droppedGear"
+        android:textSize="28sp"
+        android:textStyle="normal|bold"
         android:textAlignment="center"
-        android:layout_marginBottom="64dp"
-        android:layout_above="@+id/numberOfHighGoalsText"
-        android:layout_alignStart="@+id/numberOfHoppersDumpedText" />
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="41dp"
+        android:layout_below="@+id/numberOfGearsPlacedText"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/hopperDumpedAuto" />
 
     <TextView
         android:text="0"
         android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/numberOfHoppersDumpedText"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="36sp"
+        android:id="@+id/numberOfDroppedGearsText"
+        android:textSize="60sp"
         android:textColor="@android:color/holo_red_dark"
         android:textAlignment="center"
-        android:layout_alignBottom="@+id/miunsHopperDumpedAuto"
+        android:layout_height="70dp"
+        android:layout_alignTop="@+id/droppedGearAuto"
         android:layout_alignStart="@+id/numberOfGearsPlacedText" />
+
+    <TextView
+        android:text="0"
+        android:layout_width="50dp"
+        android:id="@+id/numberOfHoppersDumpedText"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="60sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textAlignment="center"
+        android:layout_marginTop="43dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/numberOfDroppedGearsText"
+        android:layout_alignStart="@+id/numberOfDroppedGearsText" />
+
+    <TextView
+        android:text="0"
+        android:layout_width="50dp"
+        android:id="@+id/numberOfGearsPlacedText"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="60sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textAlignment="center"
+        android:layout_height="70dp"
+        android:layout_alignTop="@+id/gearPlacedAuto"
+        android:layout_alignEnd="@+id/autoLabel" />
+
+    <TextView
+        android:text="0"
+        android:id="@+id/numberOfLowGoalsAuto"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="60sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textAlignment="center"
+        android:layout_height="70dp"
+        android:layout_width="110dp"
+        android:layout_alignTop="@+id/tenLowGoalAuto"
+        android:layout_toStartOf="@+id/minusLowGoalAuto" />
 
     <Button
         android:text="—"
         android:layout_width="80dp"
-        android:layout_height="70dp"
-        android:id="@+id/miunsHopperDumpedAuto"
-        android:onClick="minusHopperDumpedAuto"
+        android:id="@+id/minusHighGoalAuto"
+        android:onClick="minusHighGoalAuto"
         android:textColor="?attr/actionModeSplitBackground"
         android:textSize="18sp"
         android:textStyle="normal|bold"
-        android:layout_alignBottom="@+id/hopperDumpedAuto"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/hopperDumpedAuto" />
-
-    <Button
-        android:text="Hopper Dumped"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/hopperDumpedAuto"
-        android:onClick="hopperDumpedAuto"
-        android:textSize="28sp"
-        android:textColor="?attr/actionModeSplitBackground"
-        android:textStyle="normal|bold"
-        android:layout_below="@+id/droppedGearAuto"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="68dp" />
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/numberOfHighGoalsAuto"
+        android:layout_toEndOf="@+id/numberOfHighGoalsAuto" />
 
     <Button
         android:text="—"
-        android:layout_width="80dp"
-        android:layout_height="70dp"
         android:id="@+id/minusLowGoalAuto"
         android:onClick="minusLowGoalAuto"
         android:textColor="?attr/actionModeSplitBackground"
         android:textSize="18sp"
         android:textStyle="normal|bold"
-        android:layout_alignBottom="@+id/numberOfLowGoalsText"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/lowGoalAuto" />
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/numberOfLowGoalsAuto"
+        android:layout_alignParentEnd="true" />
 
     <Button
-        android:text="High Goal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/highGoalAuto"
-        android:onClick="highGoal"
-        android:textSize="28sp"
-        android:textColor="?attr/actionModeSplitBackground"
+        android:text="—"
+        android:layout_width="80dp"
+        android:id="@+id/minusDroppedGearAuto"
+        android:onClick="minusDroppedGearAuto"
         android:textStyle="normal|bold"
-        android:layout_marginBottom="54dp"
-        android:layout_above="@+id/crossBaselineAuto"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/lowGoalAuto" />
-
-    <Button
-        android:text="Low Goal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lowGoalAuto"
-        android:onClick="lowGoal"
-        android:textSize="28sp"
-        android:textColor="?attr/actionModeSplitBackground"
-        android:textStyle="normal|bold"
-        android:layout_alignBottom="@+id/numberOfLowGoalsText"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/hopperDumpedAuto" />
-
-    <ToggleButton
-        android:text="Crossed Baseline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/crossBaselineAuto"
-        tools:text="Crossed Baseline"
-        android:onClick="crossBaseline"
-        android:textSize="24sp"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_marginBottom="15dp"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:layout_height="50dp"
+        android:layout_alignBaseline="@+id/droppedGearAuto"
+        android:layout_alignBottom="@+id/droppedGearAuto"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="80dp"
+        android:id="@+id/minusGearPlacedAuto"
+        android:text="—"
+        android:onClick="minusGearPlacedAuto"
+        android:textColor="?attr/actionModeSplitBackground"
+        android:textSize="18sp"
         android:textStyle="normal|bold"
-        android:textOff="Didn't Move"
-        android:textOn="Crossed Baseline"
-        android:layout_above="@+id/toTeleop"
-        android:layout_centerHorizontal="true" />
+        android:layout_height="50dp"
+        android:layout_alignBaseline="@+id/gearPlacedAuto"
+        android:layout_alignBottom="@+id/gearPlacedAuto"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="—"
+        android:layout_width="80dp"
+        android:id="@+id/miunsHopperDumpedAuto"
+        android:onClick="minusHopperDumpedAuto"
+        android:textColor="?attr/actionModeSplitBackground"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:layout_height="50dp"
+        android:layout_alignBaseline="@+id/hopperDumpedAuto"
+        android:layout_alignBottom="@+id/hopperDumpedAuto"
+        android:layout_toEndOf="@+id/numberOfHighGoalsAuto" />
 
 </RelativeLayout>

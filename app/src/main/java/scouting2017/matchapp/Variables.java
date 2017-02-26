@@ -15,12 +15,12 @@ import java.util.List;
 import static scouting2017.matchapp.R.id.numberOfGearsPlacedText;
 import static scouting2017.matchapp.R.id.numberOfGroundBalls;
 import static scouting2017.matchapp.R.id.numberOfGroundGears;
-import static scouting2017.matchapp.R.id.numberOfHighGoalsText;
+import static scouting2017.matchapp.R.id.numberOfHighGoalsAuto;
 import static scouting2017.matchapp.R.id.numberOfHopperBalls;
 import static scouting2017.matchapp.R.id.numberOfHoppersDumped;
 import static scouting2017.matchapp.R.id.numberOfHoppersDumpedText;
 import static scouting2017.matchapp.R.id.numberOfHumanGears;
-import static scouting2017.matchapp.R.id.numberOfLowGoalsText;
+import static scouting2017.matchapp.R.id.numberOfLowGoalsAuto;
 
 /**
  * Created by mcgrathg19 on 1/18/2017.
