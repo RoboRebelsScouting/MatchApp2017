@@ -49,17 +49,6 @@
 
     <Button
         android:text="5"
-        android:onClick = "lowGoalAuto"
-        android:layout_height="70dp"
-        android:layout_alignTop="@+id/oneLowGoalAuto"
-        android:layout_toEndOf="@+id/oneLowGoalAuto"
-        android:id="@+id/fiveLowGoalAuto"
-        android:layout_width="95dp"
-        android:textSize="30sp"
-        android:textColor="@android:color/holo_red_dark" />
-
-    <Button
-        android:text="5"
         android:onClick = "highGoalAuto"
         android:layout_width="95dp"
         android:layout_height="70dp"
@@ -68,29 +57,6 @@
         android:id="@+id/fiveHighGoalAuto"
         android:textSize="30sp"
         android:textColor="@android:color/holo_red_dark" />
-
-    <Button
-        android:text="1"
-        android:onClick = "lowGoalAuto"
-        android:layout_height="70dp"
-        android:id="@+id/oneLowGoalAuto"
-        android:layout_alignBottom="@+id/zeroLowGoalAuto"
-        android:layout_toEndOf="@+id/zeroLowGoalAuto"
-        android:layout_width="95dp"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="30sp" />
-
-    <Button
-        android:text="10"
-        android:onClick = "lowGoalAuto"
-        android:layout_height="70dp"
-        android:id="@+id/tenLowGoalAuto"
-        android:layout_alignBottom="@+id/fiveLowGoalAuto"
-        android:layout_toEndOf="@+id/fiveLowGoalAuto"
-        android:layout_alignTop="@+id/fiveLowGoalAuto"
-        android:layout_width="95dp"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="30sp" />
 
     <TextView
         android:text="0"
@@ -129,7 +95,7 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:text="0"
+        android:text="X"
         android:onClick = "lowGoalAuto"
         android:layout_height="70dp"
         android:id="@+id/zeroLowGoalAuto"
@@ -141,7 +107,7 @@
         android:textColor="@android:color/holo_red_dark" />
 
     <Button
-        android:text="0"
+        android:text="X"
         android:onClick = "highGoalAuto"
         android:layout_height="70dp"
         android:id="@+id/zeroHighGoalAuto"
@@ -264,18 +230,6 @@
         android:layout_alignTop="@+id/gearPlacedAuto"
         android:layout_alignEnd="@+id/autoLabel" />
 
-    <TextView
-        android:text="0"
-        android:id="@+id/numberOfLowGoalsAuto"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="60sp"
-        android:textColor="@android:color/holo_red_dark"
-        android:textAlignment="center"
-        android:layout_height="70dp"
-        android:layout_width="110dp"
-        android:layout_alignTop="@+id/tenLowGoalAuto"
-        android:layout_toStartOf="@+id/minusLowGoalAuto" />
-
     <Button
         android:text="—"
         android:layout_width="80dp"
@@ -298,7 +252,8 @@
         android:layout_width="80dp"
         android:layout_height="50dp"
         android:layout_alignBottom="@+id/numberOfLowGoalsAuto"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/numberOfLowGoalsAuto" />
 
     <Button
         android:text="—"
@@ -339,5 +294,51 @@
         android:layout_alignBaseline="@+id/hopperDumpedAuto"
         android:layout_alignBottom="@+id/hopperDumpedAuto"
         android:layout_toEndOf="@+id/numberOfHighGoalsAuto" />
+
+    <TextView
+        android:text="0"
+        android:id="@+id/numberOfLowGoalsAuto"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="60sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textAlignment="center"
+        android:layout_height="70dp"
+        android:layout_width="110dp"
+        android:layout_alignTop="@+id/zeroLowGoalAuto"
+        android:layout_toEndOf="@+id/tenLowGoalAuto" />
+
+    <Button
+        android:text="10"
+        android:onClick = "lowGoalAuto"
+        android:layout_height="70dp"
+        android:id="@+id/tenLowGoalAuto"
+        android:layout_width="95dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp"
+        android:layout_alignTop="@+id/numberOfLowGoalsAuto"
+        android:layout_toEndOf="@+id/fiveLowGoalAuto" />
+
+    <Button
+        android:text="1"
+        android:onClick = "lowGoalAuto"
+        android:layout_height="70dp"
+        android:id="@+id/oneLowGoalAuto"
+        android:layout_width="95dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp"
+        android:layout_alignTop="@+id/zeroLowGoalAuto"
+        android:layout_toEndOf="@+id/zeroLowGoalAuto" />
+
+    <Button
+        android:text="5"
+        android:onClick = "lowGoalAuto"
+        android:layout_height="70dp"
+        android:id="@+id/fiveLowGoalAuto"
+        android:layout_width="95dp"
+        android:textSize="30sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_alignBottom="@+id/tenLowGoalAuto"
+        android:layout_toEndOf="@+id/oneLowGoalAuto"
+        android:layout_alignTop="@+id/tenLowGoalAuto" />
 
 </RelativeLayout>

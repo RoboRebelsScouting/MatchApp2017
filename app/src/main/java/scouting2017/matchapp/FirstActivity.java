@@ -34,6 +34,7 @@ public class FirstActivity extends AppCompatActivity {
         TextView eventNameText = (TextView) findViewById(R.id.enterEvent);
         TextView scouterNameText = (TextView) findViewById(R.id.enterName);
         TextView matchNumberText = (TextView) findViewById(R.id.enterMatch);
+        allianceColorToggleButton();
         if (!myAppVariables.scouterName.equals("")) {
             scouterNameText.setText(myAppVariables.scouterName);
         }
@@ -88,6 +89,17 @@ public class FirstActivity extends AppCompatActivity {
         Intent intent = new Intent(this, secondActivity.class);
         myAppVariables.startAutoTime = System.currentTimeMillis();
         startActivity(intent);
+    }
+    public void allianceColorToggleButton(){
+        ToggleButton allianceColor = (ToggleButton) findViewById(R.id.allianceColor);
+        allianceColor.setChecked(myAppVariables.allianceColor);
+        if (myAppVariables.allianceColor) {
+            //RED
+            allianceColor.getBackground().setColorFilter(new LightingColorFilter(0xFF0000FF, 0xFF0000FF));
+        } else {
+            //BLUE
+            allianceColor.getBackground().setColorFilter(new LightingColorFilter (0xFFFF0000,0xFFFF0000));
+        }
     }
     public void allianceColor(View view) {
         ToggleButton allianceColor = (ToggleButton) findViewById(R.id.allianceColor);

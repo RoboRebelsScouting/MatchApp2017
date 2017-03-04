@@ -6,12 +6,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import static scouting2017.matchapp.FirstActivity.myAppVariables;
 
 public class activity_fourth extends AppCompatActivity {
-
+public boolean robotClimbed = false;
+public boolean robotBroke = false;
     @Override
     public void onBackPressed() {
     }
@@ -31,28 +33,63 @@ public class activity_fourth extends AppCompatActivity {
         String competitionNameInfo = FirstActivity.myAppVariables.competitionName;
         String scouterNameInfo = FirstActivity.myAppVariables.scouterName;
         Integer matchNumberInfo = FirstActivity.myAppVariables.matchNumber;
+        Boolean allianceColor = FirstActivity.myAppVariables.allianceColor;
         FirstActivity.myAppVariables.reset();
         FirstActivity.myAppVariables.competitionName = competitionNameInfo;
         FirstActivity.myAppVariables.scouterName = scouterNameInfo;
         FirstActivity.myAppVariables.matchNumber = matchNumberInfo + 1;
+        FirstActivity.myAppVariables.allianceColor = allianceColor;
         startActivity(intent);
 
     }
-    public void climbed (View view) {
-        GameEvent climbed = new GameEvent () ;
-        climbed.eventType = "climbed" ;
-        climbed.eventValue = "1" ;
-        climbed.eventTime = System.currentTimeMillis() ;
-        myAppVariables.eventList.add(climbed) ;
+    public void climb (View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch(view.getId()) {
+            case R.id.climbedNo:
+                if (checked == false) {
+                    robotClimbed = true;
+                } else {
+
+                }
+                break;
+            case R.id.climbedYes:
+                if (checked == true) {
+                    robotClimbed = true;
+                }
+                break;
+        }
+
     }
-    public void broken (View view) {
-        GameEvent broken = new GameEvent () ;
-        broken.eventType = "broken" ;
-        broken.eventValue = "1" ;
-        broken.eventTime = System.currentTimeMillis() ;
-        myAppVariables.eventList.add(broken) ;
+    public void broke (View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch(view.getId()) {
+            case R.id.brokeNo:
+                if (checked == false) {
+                    robotBroke = true;
+                }
+                break;
+            case R.id.brokeYes:
+                if (checked == true) {
+                    robotBroke = true;
+                }
+                break;
+        }
     }
     public void createCSV (View view) {
+        if (robotClimbed == true) {
+            GameEvent climbed = new GameEvent();
+            climbed.eventType = "climbed";
+            climbed.eventValue = "1";
+            climbed.eventTime = System.currentTimeMillis();
+            myAppVariables.eventList.add(climbed);
+        }
+        if (robotBroke == true) {
+            GameEvent broken = new GameEvent();
+            broken.eventType = "broken";
+            broken.eventValue = "1";
+            broken.eventTime = System.currentTimeMillis();
+            myAppVariables.eventList.add(broken);
+        }
         myAppVariables.CSVCreate(this);
     }
 }

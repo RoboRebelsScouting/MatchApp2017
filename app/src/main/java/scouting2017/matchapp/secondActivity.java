@@ -22,15 +22,21 @@ public class secondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        FirstActivity.myAppVariables.autoTime = 17000 ;
-        TextView autoTimerText = (TextView) findViewById(R.id.autoTimerText) ;
-        autoTimerText.setText(String.valueOf (FirstActivity.myAppVariables.autoTime/1000));
-        autoTimer.postDelayed(updateTimer, 1000);
-        getSupportActionBar().setTitle(Integer.toString(FirstActivity.myAppVariables.robotNumber));
-        if (FirstActivity.myAppVariables.allianceColor == true) {
-            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.BLUE));
-        } else {
-            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.RED));
+
+        // only allow one timer to be created, if onCreate launched a 2nd time
+        // don't create new timer
+        if (FirstActivity.myAppVariables.timerStarted == false) {
+            FirstActivity.myAppVariables.timerStarted = true;
+            FirstActivity.myAppVariables.autoTime = 17000;
+            TextView autoTimerText = (TextView) findViewById(R.id.autoTimerText);
+            autoTimerText.setText(String.valueOf(FirstActivity.myAppVariables.autoTime / 1000));
+            autoTimer.postDelayed(updateTimer, 1000);
+            getSupportActionBar().setTitle(Integer.toString(FirstActivity.myAppVariables.robotNumber));
+            if (FirstActivity.myAppVariables.allianceColor == true) {
+                getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.BLUE));
+            } else {
+                getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.RED));
+            }
         }
     }
     private final Runnable updateTimer = new Runnable () {
@@ -80,13 +86,17 @@ public class secondActivity extends AppCompatActivity {
         TextView numberOfLowGoalsText = (TextView) findViewById(view.getId());
         // this is the text view that display the result
         TextView numberOfLowGoalsAuto = (TextView) findViewById(R.id.numberOfLowGoalsAuto);
+        Integer lowGoalAutoButtonValue = 0;
+        if (!numberOfLowGoalsText.getText().toString().equalsIgnoreCase("X")) {
+            lowGoalAutoButtonValue = Integer.parseInt(numberOfLowGoalsText.getText().toString());
+        }
         // increment my variables by the amount of goals just pressed
-        FirstActivity.myAppVariables.numberLowGoalsAuto += Integer.parseInt(numberOfLowGoalsText.getText().toString()) ;
+        FirstActivity.myAppVariables.numberLowGoalsAuto += lowGoalAutoButtonValue ;
         // update the text view with the new value of goals scored
         numberOfLowGoalsAuto.setText(Integer.toString(FirstActivity.myAppVariables.numberLowGoalsAuto));
         GameEvent lowGoalAuto = new GameEvent();
         lowGoalAuto.eventType = "lowGoalAuto";
-        lowGoalAuto.eventValue = numberOfLowGoalsText.getText().toString();
+        lowGoalAuto.eventValue = lowGoalAutoButtonValue.toString();
         lowGoalAuto.eventTime = System.currentTimeMillis();
         FirstActivity.myAppVariables.eventList.add(lowGoalAuto);
     }
@@ -94,11 +104,15 @@ public class secondActivity extends AppCompatActivity {
     public void highGoalAuto(View view) {
         TextView numberOfHighGoalsText = (TextView) findViewById(view.getId());
         TextView numberOfHighGoalsAuto = (TextView) findViewById(R.id.numberOfHighGoalsAuto);
-        FirstActivity.myAppVariables.numberHighGoalsAuto += Integer.parseInt(numberOfHighGoalsText.getText().toString()) ;
+        Integer highGoalAutoButtonValue = 0;
+        if (!numberOfHighGoalsText.getText().toString().equalsIgnoreCase("X")) {
+            highGoalAutoButtonValue = Integer.parseInt(numberOfHighGoalsText.getText().toString());
+        }
+        FirstActivity.myAppVariables.numberHighGoalsAuto += highGoalAutoButtonValue ;
         numberOfHighGoalsAuto.setText(Integer.toString(FirstActivity.myAppVariables.numberHighGoalsAuto));
         GameEvent highGoalAuto = new GameEvent();
         highGoalAuto.eventType = "highGoalAuto";
-        highGoalAuto.eventValue = numberOfHighGoalsText.getText().toString();
+        highGoalAuto.eventValue = highGoalAutoButtonValue.toString();
         highGoalAuto.eventTime = System.currentTimeMillis();
         FirstActivity.myAppVariables.eventList.add(highGoalAuto);
     }
