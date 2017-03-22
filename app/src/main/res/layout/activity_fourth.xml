@@ -10,17 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="scouting2017.matchapp.activity_fourth">
 
-    <TextView
-        android:text="End Of Game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/textView3"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="36sp"
-        android:textStyle="normal|bold" />
-
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,7 +76,6 @@
         android:textColor="@color/colorPrimary"
         android:textStyle="normal|bold"
         android:layout_marginTop="32dp"
-        android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true" />
 
     <RadioGroup

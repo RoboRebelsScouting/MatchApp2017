@@ -32,8 +32,8 @@ public class FirstActivity extends AppCompatActivity {
         setContentView(R.layout.activity_first);
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy");
         TextView eventNameText = (TextView) findViewById(R.id.enterEvent);
-        TextView scouterNameText = (TextView) findViewById(R.id.enterName);
-        TextView matchNumberText = (TextView) findViewById(R.id.enterMatch);
+        EditText scouterNameText = (EditText) findViewById(R.id.enterName);
+        EditText matchNumberText = (EditText) findViewById(R.id.enterMatch);
         allianceColorToggleButton();
         if (!myAppVariables.scouterName.equals("")) {
             scouterNameText.setText(myAppVariables.scouterName);
@@ -116,7 +116,7 @@ public class FirstActivity extends AppCompatActivity {
         } else {
             FirstActivity.myAppVariables.allianceColor = false ;
         }
-        GameEvent colorOfAlliance= new GameEvent();
+        GameEvent colorOfAlliance = new GameEvent();
         colorOfAlliance.eventType = "allianceColor";
         colorOfAlliance.eventValue = "1";
         colorOfAlliance.eventTime = System.currentTimeMillis();

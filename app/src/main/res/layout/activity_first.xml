@@ -24,20 +24,6 @@
         android:layout_height="80dp" />
 
     <TextView
-        android:text="Scouter Name:"
-        android:layout_width="wrap_content"
-        android:id="@+id/Name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="32sp"
-        android:layout_marginTop="55dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/enterName"
-        android:layout_height="80dp" />
-
-    <TextView
         android:text="Event:"
         android:layout_width="wrap_content"
         android:id="@+id/Event"
@@ -160,5 +146,19 @@
         android:layout_marginBottom="17dp"
         android:layout_above="@+id/match"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Scouter Name:"
+        android:layout_width="wrap_content"
+        android:id="@+id/Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="32sp"
+        android:layout_marginTop="55dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/enterName" />
 
 </RelativeLayout>

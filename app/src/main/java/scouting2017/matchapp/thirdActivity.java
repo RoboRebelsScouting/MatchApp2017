@@ -70,9 +70,11 @@ public class thirdActivity extends AppCompatActivity {
     }
 
     public void toEndOfGame(View view) {
-        Intent intent = new Intent(this, activity_fourth.class);
-        startActivity(intent);
-        teleopTimer.removeCallbacks(updateTimer);
+        if (FirstActivity.myAppVariables.teleopTime < 120000) {
+            Intent intent = new Intent(this, activity_fourth.class);
+            startActivity(intent);
+            teleopTimer.removeCallbacks(updateTimer);
+        }
     }
 
     private final Runnable updateTimer = new Runnable() {
@@ -375,7 +377,6 @@ public class thirdActivity extends AppCompatActivity {
     public void lowGoal(View view) {
         // this is the button that was just pressed
         TextView lowGoalText = (TextView) findViewById(view.getId());
-
         // this is the text view that display the result
         TextView numberOfLowGoalsTeleop = (TextView) findViewById(R.id.numberOfLowGoalsTeleop);
         Integer lowGoalButtonValue = 0;
@@ -384,7 +385,6 @@ public class thirdActivity extends AppCompatActivity {
         }
         // increment my variables by the amount of goals just pressed
         FirstActivity.myAppVariables.numberLowGoalsTeleop += lowGoalButtonValue;
-
         // update the text view with the new value of goals scored
         numberOfLowGoalsTeleop.setText(Integer.toString(FirstActivity.myAppVariables.numberLowGoalsTeleop));
 

@@ -94,8 +94,8 @@ public class Variables {
         numberHoppersDumpedTeleop = 0;
         droppedGearTeleop = 0;
         eventList = new ArrayList<GameEvent>();
-        scouterName = new String () ;
-        competitionName = new String() ;
+        scouterName = "" ;
+        competitionName = "" ;
         allianceColor = false ;
         matchNumber = 0 ;
         numberHighGoalsTeleop = 0;
@@ -120,77 +120,6 @@ public class Variables {
         return file;
     }
 
-    ///////////////////////////////////////////////////////////////////////
-    // not used - attempt to send file directly using bluetooth instead of
-    // using share activity
-    void blueToothSend(Activity theActivity, File file) {
-        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if (mBluetoothAdapter == null) {
-            // Device does not support Bluetooth
-            Toast.makeText(theActivity.getApplicationContext(), "Your device does not support bluetooth", Toast.LENGTH_LONG).show();
-            return;
-        } else {
-            if (!mBluetoothAdapter.isEnabled()) {
-                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                theActivity.startActivityForResult(enableBtIntent, 1);
-            } else {
-                Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
-
-                if (pairedDevices.size() > 0) {
-                    // There are paired devices. Get the name and address of each paired device.
-                    for (BluetoothDevice device : pairedDevices) {
-                        String deviceName = device.getName();
-                        String deviceHardwareAddress = device.getAddress(); // MAC address
-                        if (deviceName.equalsIgnoreCase("SCOUTINGLAPTOP2")) {
-                            //Toast.makeText(theActivity.getApplicationContext(), "paired with scoutinglaptop2", Toast.LENGTH_LONG).show();
-                            try {
-
-                                //UUID DEFAULT_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-                                //BluetoothSocket bsock = device.createRfcommSocketToServiceRecord(UUID.randomUUID());
-                                //BluetoothSocket bsock = device.createInsecureRfcommSocketToServiceRecord(DEFAULT_UUID);
-                                try {
-                                    BluetoothSocket bsock = (BluetoothSocket) device.getClass().getMethod("createRfcommSocket", new Class[] {int.class}).invoke(device,1);
-
-                                    bsock.connect();
-
-                                    OutputStream os = bsock.getOutputStream();
-
-                                    byte[] bytes = new byte[(int)file.length()];
-
-                                    try {
-                                        BufferedInputStream buf = new BufferedInputStream(new FileInputStream(file));
-                                        buf.read(bytes, 0, bytes.length);
-                                        buf.close();
-
-                                        os.write(bytes);
-
-                                    } catch (FileNotFoundException e) {
-                                        // TODO Auto-generated catch block
-                                        e.printStackTrace();
-                                    } catch (IOException e) {
-                                        // TODO Auto-generated catch block
-                                        e.printStackTrace();
-                                    }
-
-
-                                } catch (NoSuchMethodException e) {
-                                    e.printStackTrace();
-                                } catch (IllegalAccessException e) {
-                                    e.printStackTrace();
-                                } catch (InvocationTargetException e) {
-                                    e.printStackTrace();
-                                }
-
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }
-            }
-            return;
-        }
-    }
     void CSVCreate(Activity theActivity) {
         String fileName = competitionName + "-" + matchNumber + "-" + robotNumber + "-" + scouterName.trim() + "-" +
                 ".csv";
@@ -222,8 +151,6 @@ public class Variables {
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
                 theActivity.startActivityForResult(intent, 0);
-            } else {
-                blueToothSend(theActivity,file);
             }
         } catch (IOException e) {
             Log.e("ERROR", "File NOT Created", e);
