@@ -14,6 +14,8 @@ import static scouting2017.matchapp.FirstActivity.myAppVariables;
 public class activity_fourth extends AppCompatActivity {
 public boolean robotClimbed = false;
 public boolean robotBroke = false;
+    public boolean useBluetoothActivity = false;
+
     @Override
     public void onBackPressed() {
     }
@@ -29,6 +31,9 @@ public boolean robotBroke = false;
     }
     @Override
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        startFirstActivity();
+    }
+    public void startFirstActivity() {
         Intent intent = new Intent(this, FirstActivity.class) ;
         String competitionNameInfo = FirstActivity.myAppVariables.competitionName;
         String scouterNameInfo = FirstActivity.myAppVariables.scouterName;
@@ -40,8 +45,8 @@ public boolean robotBroke = false;
         FirstActivity.myAppVariables.matchNumber = matchNumberInfo + 1;
         FirstActivity.myAppVariables.allianceColor = allianceColor;
         startActivity(intent);
-
     }
+
     public void climb (View view) {
         boolean checked = ((RadioButton) view).isChecked();
         switch(view.getId()) {
@@ -99,6 +104,10 @@ public boolean robotBroke = false;
         }
         colorOfAlliance.eventTime = System.currentTimeMillis();
         FirstActivity.myAppVariables.eventList.add(colorOfAlliance);
-        myAppVariables.CSVCreate(this);
+
+        myAppVariables.CSVCreate(this,useBluetoothActivity);
+        if (useBluetoothActivity == false) {
+            startFirstActivity();
+        }
     }
 }

@@ -76,10 +76,42 @@ public class Variables {
     public int droppedGearTeleop;
     public int numberHighGoalsTeleop;
     public int numberLowGoalsTeleop;
+    public BluetoothClient btClient;
 
     public Variables() {
         reset();
     }
+
+    public void startBluetooth(Activity theActivity) {
+        // create bluetooth client and send file
+        int REQUEST_ENABLE_BT = 1;
+        BluetoothAdapter mBluetoothAdapter = android.bluetooth.BluetoothAdapter.getDefaultAdapter();
+        if (mBluetoothAdapter == null) {
+            Toast.makeText(theActivity.getApplicationContext(), "No Bluetooth", Toast.LENGTH_LONG).show();
+        }
+        if (!mBluetoothAdapter.isEnabled()) {
+            Intent enableBtIntent = new Intent(android.bluetooth.BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            theActivity.startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+        }
+
+        // bluetooth enabled
+        Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
+
+        if (pairedDevices.size() > 0) {
+            // There are paired devices. Get the name and address of each paired device.
+            for (BluetoothDevice device : pairedDevices) {
+                String deviceName = device.getName();
+                String deviceHardwareAddress = device.getAddress(); // MAC address
+
+                if (deviceName.equalsIgnoreCase("Blue3")) {
+                    // create the client, set the file namd and message string, start the thread to send it
+                    btClient = new BluetoothClient(mBluetoothAdapter,device);
+                    btClient.start();
+                }
+            }
+        }
+    }
+
     public void reset() {
         numberGearsPlacedAuto = 0;
         numberDroppedGearsAuto = 0;
@@ -120,16 +152,21 @@ public class Variables {
         return file;
     }
 
-    void CSVCreate(Activity theActivity) {
-        String fileName = competitionName + "-" + matchNumber + "-" + robotNumber + "-" + scouterName.trim() + "-" +
+    void CSVCreate(Activity theActivity, Boolean useBluetoothActivity) {
+        String fileNameBase = competitionName + "-" + matchNumber + "-" + robotNumber + "-" + scouterName.trim();
+        String fileName = fileNameBase +
                 ".csv";
         File directory = getAlbumStorageDir("/FRC2017");
         File file = new File(directory,fileName);
+
+        String fileString = new String();
+
         try {
             FileWriter writer = new FileWriter(file);
             String lineOne = competitionName + "," + matchNumber + "," + robotNumber + "," + scouterName.trim() ;
 
             writer.write(lineOne + "\n");
+            fileString = fileString + lineOne + "\n";
 
             for (int c = 0; c < eventList.size(); c++) {
                 String output = "";
@@ -139,18 +176,24 @@ public class Variables {
                         eventList.get(c).eventValue;
 
                 writer.write(output + "\n");
+                fileString = fileString + output + "\n";
 
             }
 
             writer.close();
 
-            boolean useBluetoothActivity = true;
             if (useBluetoothActivity == true) {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
                 theActivity.startActivityForResult(intent, 0);
+            } else {
+                //btClient.start();
+                btClient.fname =  String.format("%50s",fileNameBase);
+                btClient.messageString = fileString;
+                btClient.launchActivity = theActivity;
+                btClient.btSend(fileString);
             }
         } catch (IOException e) {
             Log.e("ERROR", "File NOT Created", e);

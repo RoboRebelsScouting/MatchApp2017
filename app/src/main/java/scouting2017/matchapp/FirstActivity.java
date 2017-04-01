@@ -28,6 +28,7 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if (myAppVariables == null) {
             myAppVariables = new Variables () ;
+            myAppVariables.startBluetooth(this);
         }
         setContentView(R.layout.activity_first);
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy");
@@ -55,7 +56,7 @@ public class FirstActivity extends AppCompatActivity {
                 eventNameText.setText("Bryant");
             } else if ((currentTimeInMillis >= sdf.parse("Mar 28 2017").getTime()) &&
                     (currentTimeInMillis < sdf.parse("Apr 9 2017").getTime() )) {
-                eventNameText.setText("NE Champs");
+                eventNameText.setText("UNH");
             }  else {
                 eventNameText.setText("Worlds");
             }
