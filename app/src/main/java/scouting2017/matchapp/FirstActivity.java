@@ -55,7 +55,7 @@ public class FirstActivity extends AppCompatActivity {
                 eventNameText.setText("Bryant");
             } else if ((currentTimeInMillis >= sdf.parse("Mar 28 2017").getTime()) &&
                     (currentTimeInMillis < sdf.parse("Apr 9 2017").getTime() )) {
-                eventNameText.setText("NE_Champs");
+                eventNameText.setText("NE Champs");
             }  else {
                 eventNameText.setText("Worlds");
             }
@@ -116,10 +116,5 @@ public class FirstActivity extends AppCompatActivity {
         } else {
             FirstActivity.myAppVariables.allianceColor = false ;
         }
-        GameEvent colorOfAlliance = new GameEvent();
-        colorOfAlliance.eventType = "allianceColor";
-        colorOfAlliance.eventValue = "1";
-        colorOfAlliance.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(colorOfAlliance);
     }
 }

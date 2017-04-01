@@ -90,6 +90,15 @@ public boolean robotBroke = false;
             broken.eventTime = System.currentTimeMillis();
             myAppVariables.eventList.add(broken);
         }
+        GameEvent colorOfAlliance = new GameEvent();
+        colorOfAlliance.eventType = "allianceColor";
+        if (FirstActivity.myAppVariables.allianceColor == true) {
+            colorOfAlliance.eventValue = "Blue";
+        } else {
+            colorOfAlliance.eventValue = "Red";
+        }
+        colorOfAlliance.eventTime = System.currentTimeMillis();
+        FirstActivity.myAppVariables.eventList.add(colorOfAlliance);
         myAppVariables.CSVCreate(this);
     }
 }

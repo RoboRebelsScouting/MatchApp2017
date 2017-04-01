@@ -21,31 +21,6 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:text="To Teleop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/toTeleop"
-        android:onClick="toTeleop"
-        android:textSize="24sp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold" />
-
-    <Button
-        android:text="Crossed Baseline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/crossBaselineAuto"
-        tools:text="Crossed Baseline"
-        android:onClick="crossBaseline"
-        android:textSize="24sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold"
-        android:layout_above="@+id/toTeleop"
-        android:layout_centerHorizontal="true" />
-
-    <Button
         android:text="5"
         android:onClick = "highGoalAuto"
         android:layout_width="95dp"
@@ -101,18 +76,6 @@
         android:layout_below="@+id/hopperDumpedAuto"
         android:layout_alignParentStart="true"
         android:layout_marginTop="77dp"
-        android:textSize="30sp"
-        android:textColor="@android:color/holo_red_dark" />
-
-    <Button
-        android:text="X"
-        android:onClick = "highGoalAuto"
-        android:layout_height="70dp"
-        android:id="@+id/zeroHighGoalAuto"
-        android:layout_width="95dp"
-        android:layout_marginBottom="44dp"
-        android:layout_above="@+id/crossBaselineAuto"
-        android:layout_alignParentStart="true"
         android:textSize="30sp"
         android:textColor="@android:color/holo_red_dark" />
 
@@ -231,31 +194,6 @@
     <Button
         android:text="—"
         android:layout_width="80dp"
-        android:id="@+id/minusHighGoalAuto"
-        android:onClick="minusHighGoalAuto"
-        android:textColor="?attr/actionModeSplitBackground"
-        android:textSize="18sp"
-        android:textStyle="normal|bold"
-        android:layout_height="50dp"
-        android:layout_alignBottom="@+id/numberOfHighGoalsAuto"
-        android:layout_toEndOf="@+id/numberOfHighGoalsAuto" />
-
-    <Button
-        android:text="—"
-        android:id="@+id/minusLowGoalAuto"
-        android:onClick="minusLowGoalAuto"
-        android:textColor="?attr/actionModeSplitBackground"
-        android:textSize="18sp"
-        android:textStyle="normal|bold"
-        android:layout_width="80dp"
-        android:layout_height="50dp"
-        android:layout_alignBottom="@+id/numberOfLowGoalsAuto"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/numberOfLowGoalsAuto" />
-
-    <Button
-        android:text="—"
-        android:layout_width="80dp"
         android:id="@+id/minusDroppedGearAuto"
         android:onClick="minusDroppedGearAuto"
         android:textStyle="normal|bold"
@@ -338,5 +276,69 @@
         android:layout_alignBottom="@+id/tenLowGoalAuto"
         android:layout_toEndOf="@+id/oneLowGoalAuto"
         android:layout_alignTop="@+id/tenLowGoalAuto" />
+
+    <Button
+        android:text="To Teleop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toTeleop"
+        android:onClick="toTeleop"
+        android:textSize="24sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <RadioButton
+        android:text="Crossed Baseline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/crossBaselineAuto"
+        tools:text="Crossed Baseline"
+        android:onClick="crossBaseline"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold"
+        android:layout_marginBottom="27dp"
+        android:layout_above="@+id/toTeleop"
+        android:layout_centerHorizontal="true"
+        app:buttonTint="@android:color/holo_red_dark"
+        android:checked="false" />
+
+    <Button
+        android:text="X"
+        android:onClick = "highGoalAuto"
+        android:layout_height="70dp"
+        android:id="@+id/zeroHighGoalAuto"
+        android:layout_width="95dp"
+        android:layout_marginBottom="33dp"
+        android:textSize="30sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_above="@+id/crossBaselineAuto"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="—"
+        android:id="@+id/minusLowGoalAuto"
+        android:onClick="minusLowGoalAuto"
+        android:textColor="?attr/actionModeSplitBackground"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/numberOfLowGoalsAuto"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="—"
+        android:layout_width="80dp"
+        android:id="@+id/minusHighGoalAuto"
+        android:onClick="minusHighGoalAuto"
+        android:textColor="?attr/actionModeSplitBackground"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:layout_height="50dp"
+        android:layout_alignTop="@+id/numberOfHighGoalsAuto"
+        android:layout_toEndOf="@+id/numberOfHighGoalsAuto" />
 
 </RelativeLayout>
