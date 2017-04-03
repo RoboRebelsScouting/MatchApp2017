@@ -60,6 +60,7 @@ public class Variables {
     public int numberDroppedGears;
     public int numberHopperBalls;
     public int numberHoppersDumpedTeleop;
+    public int crossBaselineAuto;
     public List<GameEvent> eventList;
     public long startAutoTime;
     public long autoTime;
@@ -124,6 +125,7 @@ public class Variables {
         numberDroppedGears = 0;
         numberHopperBalls = 0;
         numberHoppersDumpedTeleop = 0;
+        crossBaselineAuto = 0;
         droppedGearTeleop = 0;
         eventList = new ArrayList<GameEvent>();
         scouterName = "" ;
@@ -152,7 +154,7 @@ public class Variables {
         return file;
     }
 
-    void CSVCreate(Activity theActivity, Boolean useBluetoothActivity) {
+    void CSVCreate(Activity theActivity, Boolean useBluetoothActivity, Boolean saveFileOnly) {
         String fileNameBase = competitionName + "-" + matchNumber + "-" + robotNumber + "-" + scouterName.trim();
         String fileName = fileNameBase +
                 ".csv";
@@ -188,7 +190,7 @@ public class Variables {
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
                 theActivity.startActivityForResult(intent, 0);
-            } else {
+            } else if (saveFileOnly == false){
                 //btClient.start();
                 btClient.fname =  String.format("%50s",fileNameBase);
                 btClient.messageString = fileString;

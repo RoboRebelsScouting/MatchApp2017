@@ -266,7 +266,7 @@
 
     <Button
         android:text="End of Game"
-        android:id="@+id/submitButton"
+        android:id="@+id/submitOldButton"
         android:textSize="24sp"
         android:layout_row="13"
         android:layout_column="1"

@@ -289,21 +289,32 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
-    <RadioButton
+    <Button
         android:text="Crossed Baseline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/crossBaselineAuto"
         tools:text="Crossed Baseline"
         android:onClick="crossBaseline"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="normal|bold"
         android:layout_marginBottom="27dp"
         android:layout_above="@+id/toTeleop"
-        android:layout_centerHorizontal="true"
-        app:buttonTint="@android:color/holo_red_dark"
-        android:checked="false" />
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/crossBaselineText"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="36sp"
+        android:textAlignment="center"
+        android:layout_alignTop="@+id/crossBaselineAuto"
+        android:layout_toEndOf="@+id/crossBaselineAuto"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/crossBaselineAuto"
+        tools:text="" />
 
     <Button
         android:text="X"

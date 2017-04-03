@@ -2,7 +2,6 @@ package scouting2017.matchapp;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -11,32 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import static scouting2017.matchapp.R.id.approachBoiler;
-import static scouting2017.matchapp.R.id.ballsPickedUpHopper;
-import static scouting2017.matchapp.R.id.droppedGearTeleop;
-import static scouting2017.matchapp.R.id.fiveHighGoal;
-import static scouting2017.matchapp.R.id.fiveLowGoal;
-import static scouting2017.matchapp.R.id.gearPickedUpGround;
-import static scouting2017.matchapp.R.id.gearPickedUpHuman;
-import static scouting2017.matchapp.R.id.gearPlacedTeleop;
-import static scouting2017.matchapp.R.id.hopperDumpedTeleop;
-import static scouting2017.matchapp.R.id.leaveBoiler;
-import static scouting2017.matchapp.R.id.minusDroppedGearTeleop;
-import static scouting2017.matchapp.R.id.minusGearPlacedTeleop;
-import static scouting2017.matchapp.R.id.minusGroundGear;
-import static scouting2017.matchapp.R.id.minusHighGoalTeleop;
-import static scouting2017.matchapp.R.id.minusHopper;
-import static scouting2017.matchapp.R.id.minusHopperBalls;
-import static scouting2017.matchapp.R.id.minusHumanGear;
-import static scouting2017.matchapp.R.id.minusLowGoalTeleop;
-import static scouting2017.matchapp.R.id.oneHighGoal;
-import static scouting2017.matchapp.R.id.oneLowGoal;
-import static scouting2017.matchapp.R.id.submitButton;
-import static scouting2017.matchapp.R.id.tenHighGoal;
-import static scouting2017.matchapp.R.id.tenLowGoal;
-import static scouting2017.matchapp.R.id.zeroHighGoal;
-import static scouting2017.matchapp.R.id.zeroLowGoal;
 
 public class thirdActivity extends AppCompatActivity {
     public Handler teleopTimer = new Handler();
@@ -190,7 +163,7 @@ public class thirdActivity extends AppCompatActivity {
         }else {
             approachBoiler.setAlpha(1.0f);
         }
-        Button submitButton = (Button)findViewById(R.id.submitButton);
+        Button submitButton = (Button)findViewById(R.id.submitOldButton);
         submitButton.setEnabled (!submitButton.isEnabled());
         if (!submitButton.isEnabled()){
             submitButton.setAlpha(0.5f);

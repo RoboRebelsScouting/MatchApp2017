@@ -37,7 +37,7 @@
         android:text="End of Game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/submitButton"
+        android:id="@+id/submitOldButton"
         android:textSize="24sp"
         android:onClick="toEndOfGame"
         android:textColor="@color/colorPrimaryDark"
@@ -474,8 +474,8 @@
         android:layout_width="105dp"
         android:layout_height="55dp"
         android:layout_marginBottom="14dp"
-        android:layout_above="@+id/submitButton"
-        android:layout_alignStart="@+id/submitButton" />
+        android:layout_above="@+id/submitOldButton"
+        android:layout_alignStart="@+id/submitOldButton" />
 
     <TextView
         android:text="High Goals"

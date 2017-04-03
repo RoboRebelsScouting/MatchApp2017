@@ -15,6 +15,7 @@ public class activity_fourth extends AppCompatActivity {
 public boolean robotClimbed = false;
 public boolean robotBroke = false;
     public boolean useBluetoothActivity = false;
+    public boolean saveFileOnly = false;
 
     @Override
     public void onBackPressed() {
@@ -80,6 +81,24 @@ public boolean robotBroke = false;
                 break;
         }
     }
+    public void submitNew (View view) {
+        useBluetoothActivity = false;
+        saveFileOnly = false;
+        this.createCSV(view);
+    }
+
+    public void submitOld (View view) {
+        useBluetoothActivity = true;
+        saveFileOnly = false;
+        this.createCSV(view);
+    }
+
+    public void saveFile (View view) {
+        useBluetoothActivity = false;
+        saveFileOnly = true;
+        this.createCSV(view);
+    }
+
     public void createCSV (View view) {
         if (robotClimbed == true) {
             GameEvent climbed = new GameEvent();
@@ -105,7 +124,7 @@ public boolean robotBroke = false;
         colorOfAlliance.eventTime = System.currentTimeMillis();
         FirstActivity.myAppVariables.eventList.add(colorOfAlliance);
 
-        myAppVariables.CSVCreate(this,useBluetoothActivity);
+        myAppVariables.CSVCreate(this,useBluetoothActivity,saveFileOnly);
         if (useBluetoothActivity == false) {
             startFirstActivity();
         }

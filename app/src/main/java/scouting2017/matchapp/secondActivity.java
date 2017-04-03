@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
+import static scouting2017.matchapp.FirstActivity.myAppVariables;
 import static scouting2017.matchapp.R.id.crossBaselineAuto;
 
 
@@ -31,14 +32,14 @@ public class secondActivity extends AppCompatActivity {
 
         // only allow one timer to be created, if onCreate launched a 2nd time
         // don't create new timer
-        if (FirstActivity.myAppVariables.timerStarted == false) {
-            FirstActivity.myAppVariables.timerStarted = true;
-            FirstActivity.myAppVariables.autoTime = 17000;
+        if (myAppVariables.timerStarted == false) {
+            myAppVariables.timerStarted = true;
+            myAppVariables.autoTime = 17000;
             TextView autoTimerText = (TextView) findViewById(R.id.autoTimerText);
-            autoTimerText.setText(String.valueOf(FirstActivity.myAppVariables.autoTime / 1000));
+            autoTimerText.setText(String.valueOf(myAppVariables.autoTime / 1000));
             autoTimer.postDelayed(updateTimer, 1000);
-            getSupportActionBar().setTitle(Integer.toString(FirstActivity.myAppVariables.robotNumber));
-            if (FirstActivity.myAppVariables.allianceColor == true) {
+            getSupportActionBar().setTitle(Integer.toString(myAppVariables.robotNumber));
+            if (myAppVariables.allianceColor == true) {
                 getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.BLUE));
             } else {
                 getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.RED));
@@ -49,10 +50,10 @@ public class secondActivity extends AppCompatActivity {
     private final Runnable updateTimer = new Runnable() {
         public void run() {
             try {
-                FirstActivity.myAppVariables.autoTime -= 1000;
+                myAppVariables.autoTime -= 1000;
                 TextView autoTimerText = (TextView) findViewById(R.id.autoTimerText);
-                autoTimerText.setText(String.valueOf(FirstActivity.myAppVariables.autoTime / 1000));
-                if (FirstActivity.myAppVariables.autoTime <= 0) {
+                autoTimerText.setText(String.valueOf(myAppVariables.autoTime / 1000));
+                if (myAppVariables.autoTime <= 0) {
                     toTeleop((View) findViewById(R.id.activity_second));
                 } else {
                     autoTimer.postDelayed(this, 1000);
@@ -70,25 +71,25 @@ public class secondActivity extends AppCompatActivity {
     }
 
     public void gearPlaced(View view) {
-        FirstActivity.myAppVariables.numberGearsPlacedAuto++;
+        myAppVariables.numberGearsPlacedAuto++;
         TextView numberOfGearsPlacedText = (TextView) findViewById(R.id.numberOfGearsPlacedText);
-        numberOfGearsPlacedText.setText(Integer.toString(FirstActivity.myAppVariables.numberGearsPlacedAuto));
+        numberOfGearsPlacedText.setText(Integer.toString(myAppVariables.numberGearsPlacedAuto));
         GameEvent gearPlacedAuto = new GameEvent();
         gearPlacedAuto.eventType = "gearPlacedAuto";
         gearPlacedAuto.eventValue = "1";
         gearPlacedAuto.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(gearPlacedAuto);
+        myAppVariables.eventList.add(gearPlacedAuto);
     }
 
     public void droppedGear(View view) {
-        FirstActivity.myAppVariables.numberDroppedGearsAuto++;
+        myAppVariables.numberDroppedGearsAuto++;
         TextView numberOfDroppedGearsText = (TextView) findViewById(R.id.numberOfDroppedGearsText);
-        numberOfDroppedGearsText.setText(Integer.toString(FirstActivity.myAppVariables.numberDroppedGearsAuto));
+        numberOfDroppedGearsText.setText(Integer.toString(myAppVariables.numberDroppedGearsAuto));
         GameEvent droppedGearAuto = new GameEvent();
         droppedGearAuto.eventType = "droppedGearAuto";
         droppedGearAuto.eventValue = "1";
         droppedGearAuto.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(droppedGearAuto);
+        myAppVariables.eventList.add(droppedGearAuto);
     }
 
     public void lowGoalAuto(View view) {
@@ -101,14 +102,14 @@ public class secondActivity extends AppCompatActivity {
             lowGoalAutoButtonValue = Integer.parseInt(numberOfLowGoalsText.getText().toString());
         }
         // increment my variables by the amount of goals just pressed
-        FirstActivity.myAppVariables.numberLowGoalsAuto += lowGoalAutoButtonValue;
+        myAppVariables.numberLowGoalsAuto += lowGoalAutoButtonValue;
         // update the text view with the new value of goals scored
-        numberOfLowGoalsAuto.setText(Integer.toString(FirstActivity.myAppVariables.numberLowGoalsAuto));
+        numberOfLowGoalsAuto.setText(Integer.toString(myAppVariables.numberLowGoalsAuto));
         GameEvent lowGoalAuto = new GameEvent();
         lowGoalAuto.eventType = "lowGoalAuto";
         lowGoalAuto.eventValue = lowGoalAutoButtonValue.toString();
         lowGoalAuto.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(lowGoalAuto);
+        myAppVariables.eventList.add(lowGoalAuto);
     }
 
     public void highGoalAuto(View view) {
@@ -118,100 +119,107 @@ public class secondActivity extends AppCompatActivity {
         if (!numberOfHighGoalsText.getText().toString().equalsIgnoreCase("X")) {
             highGoalAutoButtonValue = Integer.parseInt(numberOfHighGoalsText.getText().toString());
         }
-        FirstActivity.myAppVariables.numberHighGoalsAuto += highGoalAutoButtonValue;
-        numberOfHighGoalsAuto.setText(Integer.toString(FirstActivity.myAppVariables.numberHighGoalsAuto));
+        myAppVariables.numberHighGoalsAuto += highGoalAutoButtonValue;
+        numberOfHighGoalsAuto.setText(Integer.toString(myAppVariables.numberHighGoalsAuto));
         GameEvent highGoalAuto = new GameEvent();
         highGoalAuto.eventType = "highGoalAuto";
         highGoalAuto.eventValue = highGoalAutoButtonValue.toString();
         highGoalAuto.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(highGoalAuto);
+        myAppVariables.eventList.add(highGoalAuto);
     }
 
     public void hopperDumpedAuto(View view) {
-        if (FirstActivity.myAppVariables.numberHoppersDumpedAuto < 5) {
-            FirstActivity.myAppVariables.numberHoppersDumpedAuto++;
+        if (myAppVariables.numberHoppersDumpedAuto < 5) {
+            myAppVariables.numberHoppersDumpedAuto++;
         } else {
             return;
         }
         TextView numberOfHoppersDumpedText = (TextView) findViewById(R.id.numberOfHoppersDumpedText);
-        numberOfHoppersDumpedText.setText(Integer.toString(FirstActivity.myAppVariables.numberHoppersDumpedAuto));
+        numberOfHoppersDumpedText.setText(Integer.toString(myAppVariables.numberHoppersDumpedAuto));
         GameEvent hopperDumpedAuto = new GameEvent();
         hopperDumpedAuto.eventType = "hopperDumpedAuto";
         hopperDumpedAuto.eventValue = "1";
         hopperDumpedAuto.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(hopperDumpedAuto);
+        myAppVariables.eventList.add(hopperDumpedAuto);
     }
 
     public void minusHopperDumpedAuto(View view) {
-        if (FirstActivity.myAppVariables.numberHoppersDumpedAuto > 0) {
-            FirstActivity.myAppVariables.numberHoppersDumpedAuto--;
+        if (myAppVariables.numberHoppersDumpedAuto > 0) {
+            myAppVariables.numberHoppersDumpedAuto--;
         }
         TextView numberOfHoppersDumpedText = (TextView) findViewById(R.id.numberOfHoppersDumpedText);
-        numberOfHoppersDumpedText.setText(Integer.toString(FirstActivity.myAppVariables.numberHoppersDumpedAuto));
+        numberOfHoppersDumpedText.setText(Integer.toString(myAppVariables.numberHoppersDumpedAuto));
         GameEvent minusHopperDumpedAuto = new GameEvent();
         minusHopperDumpedAuto.eventType = "hopperDumpedAuto";
         minusHopperDumpedAuto.eventValue = "1";
         minusHopperDumpedAuto.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(minusHopperDumpedAuto);
+        myAppVariables.eventList.add(minusHopperDumpedAuto);
     }
 
     public void minusLowGoalAuto(View view) {
-        if (FirstActivity.myAppVariables.numberLowGoalsAuto > 0) {
-            FirstActivity.myAppVariables.numberLowGoalsAuto--;
+        if (myAppVariables.numberLowGoalsAuto > 0) {
+            myAppVariables.numberLowGoalsAuto--;
         }
         TextView numberOfLowGoalsText = (TextView) findViewById(R.id.numberOfLowGoalsAuto);
-        numberOfLowGoalsText.setText(Integer.toString(FirstActivity.myAppVariables.numberLowGoalsAuto));
+        numberOfLowGoalsText.setText(Integer.toString(myAppVariables.numberLowGoalsAuto));
         GameEvent minusLowGoalAuto = new GameEvent();
         minusLowGoalAuto.eventType = "lowGoalAuto";
         minusLowGoalAuto.eventValue = "1";
         minusLowGoalAuto.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(minusLowGoalAuto);
+        myAppVariables.eventList.add(minusLowGoalAuto);
     }
 
     public void minusHighGoalAuto(View view) {
-        if (FirstActivity.myAppVariables.numberHighGoalsAuto > 0) {
-            FirstActivity.myAppVariables.numberHighGoalsAuto--;
+        if (myAppVariables.numberHighGoalsAuto > 0) {
+            myAppVariables.numberHighGoalsAuto--;
         }
         TextView numberOfHighGoalsText = (TextView) findViewById(R.id.numberOfHighGoalsAuto);
-        numberOfHighGoalsText.setText(Integer.toString(FirstActivity.myAppVariables.numberHighGoalsAuto));
+        numberOfHighGoalsText.setText(Integer.toString(myAppVariables.numberHighGoalsAuto));
         GameEvent minusHighGoalAuto = new GameEvent();
         minusHighGoalAuto.eventType = "highGoalAuto";
         minusHighGoalAuto.eventValue = "1";
         minusHighGoalAuto.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(minusHighGoalAuto);
+        myAppVariables.eventList.add(minusHighGoalAuto);
     }
 
     public void minusGearPlacedAuto(View view) {
-        if (FirstActivity.myAppVariables.numberGearsPlacedAuto > 0) {
-            FirstActivity.myAppVariables.numberGearsPlacedAuto--;
+        if (myAppVariables.numberGearsPlacedAuto > 0) {
+            myAppVariables.numberGearsPlacedAuto--;
         }
         TextView numberOfGearsPlacedText = (TextView) findViewById(R.id.numberOfGearsPlacedText);
-        numberOfGearsPlacedText.setText(Integer.toString(FirstActivity.myAppVariables.numberGearsPlacedAuto));
+        numberOfGearsPlacedText.setText(Integer.toString(myAppVariables.numberGearsPlacedAuto));
         GameEvent minusGearPlacedAuto = new GameEvent();
         minusGearPlacedAuto.eventType = "gearPlacedAuto";
         minusGearPlacedAuto.eventValue = "1";
         minusGearPlacedAuto.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(minusGearPlacedAuto);
+        myAppVariables.eventList.add(minusGearPlacedAuto);
     }
 
     public void minusDroppedGearAuto(View view) {
-        if (FirstActivity.myAppVariables.numberDroppedGearsAuto > 0) {
-            FirstActivity.myAppVariables.numberDroppedGearsAuto--;
+        if (myAppVariables.numberDroppedGearsAuto > 0) {
+            myAppVariables.numberDroppedGearsAuto--;
         }
         TextView numberOfDroppedGearsText = (TextView) findViewById(R.id.numberOfDroppedGearsText);
-        numberOfDroppedGearsText.setText(Integer.toString(FirstActivity.myAppVariables.numberDroppedGearsAuto));
+        numberOfDroppedGearsText.setText(Integer.toString(myAppVariables.numberDroppedGearsAuto));
         GameEvent minusDroppedGearAuto = new GameEvent();
         minusDroppedGearAuto.eventType = "droppedGearAuto";
         minusDroppedGearAuto.eventValue = "1";
         minusDroppedGearAuto.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(minusDroppedGearAuto);
+        myAppVariables.eventList.add(minusDroppedGearAuto);
     }
 
     public void crossBaseline(View view) {
+        if (myAppVariables.crossBaselineAuto < 1) {
+            myAppVariables.crossBaselineAuto++;
+        } else {
+            return;
+        }
+        TextView crossBaselineText = (TextView) findViewById(R.id.crossBaselineText);
+        crossBaselineText.setText("✓");
         GameEvent crossBaselineAuto = new GameEvent();
         crossBaselineAuto.eventType = "crossBaselineAuto";
         crossBaselineAuto.eventValue = "1";
         crossBaselineAuto.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(crossBaselineAuto);
+        myAppVariables.eventList.add(crossBaselineAuto);
     }
 }
