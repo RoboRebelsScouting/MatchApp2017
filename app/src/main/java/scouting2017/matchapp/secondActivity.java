@@ -101,11 +101,11 @@ public class secondActivity extends AppCompatActivity {
         }
         myAppVariables.numberHighGoalsAuto += highGoalAutoButtonValue;
         numberOfHighGoalsAuto.setText(Integer.toString(myAppVariables.numberHighGoalsAuto));
-        GameEvent highGoalAuto = new GameEvent();
-        highGoalAuto.eventType = "highGoalAuto";
-        highGoalAuto.eventValue = highGoalAutoButtonValue.toString();
-        highGoalAuto.eventTime = System.currentTimeMillis();
-        myAppVariables.eventList.add(highGoalAuto);
+        //GameEvent highGoalAuto = new GameEvent();
+        //highGoalAuto.eventType = "highGoalAuto";
+        //highGoalAuto.eventValue = highGoalAutoButtonValue.toString();
+        //highGoalAuto.eventTime = System.currentTimeMillis();
+        //myAppVariables.eventList.add(highGoalAuto);
     }
 
     public void hopperDumpedAuto(View view) {
@@ -142,11 +142,11 @@ public class secondActivity extends AppCompatActivity {
         }
         TextView numberOfHighGoalsText = (TextView) findViewById(R.id.numberOfHighGoalsAuto);
         numberOfHighGoalsText.setText(Integer.toString(myAppVariables.numberHighGoalsAuto));
-        GameEvent minusHighGoalAuto = new GameEvent();
-        minusHighGoalAuto.eventType = "highGoalAuto";
-        minusHighGoalAuto.eventValue = "1";
-        minusHighGoalAuto.eventTime = System.currentTimeMillis();
-        myAppVariables.eventList.add(minusHighGoalAuto);
+        //GameEvent minusHighGoalAuto = new GameEvent();
+        //minusHighGoalAuto.eventType = "highGoalAuto";
+        //minusHighGoalAuto.eventValue = "1";
+       // minusHighGoalAuto.eventTime = System.currentTimeMillis();
+        //myAppVariables.eventList.add(minusHighGoalAuto);
     }
 
     public void minusGearPlacedAuto(View view) {

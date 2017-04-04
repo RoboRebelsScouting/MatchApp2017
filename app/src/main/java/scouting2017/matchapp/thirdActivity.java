@@ -282,11 +282,11 @@ public class thirdActivity extends AppCompatActivity {
         }
         FirstActivity.myAppVariables.numberHighGoalsTeleop += highGoalButtonValue;
         numberOfHighGoalsTeleop.setText(Integer.toString(FirstActivity.myAppVariables.numberHighGoalsTeleop));
-        GameEvent highGoal = new GameEvent();
-        highGoal.eventType = "highGoal";
-        highGoal.eventValue = highGoalButtonValue.toString();
-        highGoal.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(highGoal);
+        //GameEvent highGoal = new GameEvent();
+        //highGoal.eventType = "highGoal";
+       // highGoal.eventValue = highGoalButtonValue.toString();
+       // highGoal.eventTime = System.currentTimeMillis();
+       // FirstActivity.myAppVariables.eventList.add(highGoal);
     }
 
     public void minusHighGoalTeleop(View view) {
@@ -295,11 +295,11 @@ public class thirdActivity extends AppCompatActivity {
         }
         TextView numberOfHighGoalsTeleop = (TextView) findViewById(R.id.numberOfHighGoalsTeleop);
         numberOfHighGoalsTeleop.setText(Integer.toString(FirstActivity.myAppVariables.numberHighGoalsTeleop));
-        GameEvent minusHighGoalsTeleop = new GameEvent();
-        minusHighGoalsTeleop.eventType = "highGoalsTeleop";
-        minusHighGoalsTeleop.eventValue = "1";
-        minusHighGoalsTeleop.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(minusHighGoalsTeleop);
+        //GameEvent minusHighGoalsTeleop = new GameEvent();
+        //minusHighGoalsTeleop.eventType = "highGoalsTeleop";
+        //minusHighGoalsTeleop.eventValue = "1";
+       // minusHighGoalsTeleop.eventTime = System.currentTimeMillis();
+       // FirstActivity.myAppVariables.eventList.add(minusHighGoalsTeleop);
     }
 
     public void minusGroundGear(View view) {
