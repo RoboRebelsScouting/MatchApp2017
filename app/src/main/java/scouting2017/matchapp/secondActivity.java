@@ -92,26 +92,6 @@ public class secondActivity extends AppCompatActivity {
         myAppVariables.eventList.add(droppedGearAuto);
     }
 
-    public void lowGoalAuto(View view) {
-        // this is the button that was just pressed
-        TextView numberOfLowGoalsText = (TextView) findViewById(view.getId());
-        // this is the text view that display the result
-        TextView numberOfLowGoalsAuto = (TextView) findViewById(R.id.numberOfLowGoalsAuto);
-        Integer lowGoalAutoButtonValue = 0;
-        if (!numberOfLowGoalsText.getText().toString().equalsIgnoreCase("X")) {
-            lowGoalAutoButtonValue = Integer.parseInt(numberOfLowGoalsText.getText().toString());
-        }
-        // increment my variables by the amount of goals just pressed
-        myAppVariables.numberLowGoalsAuto += lowGoalAutoButtonValue;
-        // update the text view with the new value of goals scored
-        numberOfLowGoalsAuto.setText(Integer.toString(myAppVariables.numberLowGoalsAuto));
-        GameEvent lowGoalAuto = new GameEvent();
-        lowGoalAuto.eventType = "lowGoalAuto";
-        lowGoalAuto.eventValue = lowGoalAutoButtonValue.toString();
-        lowGoalAuto.eventTime = System.currentTimeMillis();
-        myAppVariables.eventList.add(lowGoalAuto);
-    }
-
     public void highGoalAuto(View view) {
         TextView numberOfHighGoalsText = (TextView) findViewById(view.getId());
         TextView numberOfHighGoalsAuto = (TextView) findViewById(R.id.numberOfHighGoalsAuto);
@@ -154,19 +134,6 @@ public class secondActivity extends AppCompatActivity {
         minusHopperDumpedAuto.eventValue = "1";
         minusHopperDumpedAuto.eventTime = System.currentTimeMillis();
         myAppVariables.eventList.add(minusHopperDumpedAuto);
-    }
-
-    public void minusLowGoalAuto(View view) {
-        if (myAppVariables.numberLowGoalsAuto > 0) {
-            myAppVariables.numberLowGoalsAuto--;
-        }
-        TextView numberOfLowGoalsText = (TextView) findViewById(R.id.numberOfLowGoalsAuto);
-        numberOfLowGoalsText.setText(Integer.toString(myAppVariables.numberLowGoalsAuto));
-        GameEvent minusLowGoalAuto = new GameEvent();
-        minusLowGoalAuto.eventType = "lowGoalAuto";
-        minusLowGoalAuto.eventValue = "1";
-        minusLowGoalAuto.eventTime = System.currentTimeMillis();
-        myAppVariables.eventList.add(minusLowGoalAuto);
     }
 
     public void minusHighGoalAuto(View view) {

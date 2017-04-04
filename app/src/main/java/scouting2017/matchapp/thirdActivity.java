@@ -38,7 +38,7 @@ public class thirdActivity extends AppCompatActivity {
             teleopTimerText.setText(remainingMinutes + ":" + remainingSeconds);
         }
         teleopTimer.postDelayed(updateTimer, 1000);
-        toggleGoal();
+        //toggleGoal();
         ImageButton hopperDumpedTeleop = (ImageButton)findViewById(R.id.hopperDumpedTeleop);
     }
 
@@ -73,7 +73,6 @@ public class thirdActivity extends AppCompatActivity {
     };
     public void toggleAll () {
         ImageButton hopperDumpedTeleop = (ImageButton)findViewById(R.id.hopperDumpedTeleop);
-        hopperDumpedTeleop.setEnabled (!hopperDumpedTeleop.isEnabled());
         if (!hopperDumpedTeleop.isEnabled()) {
             hopperDumpedTeleop.setAlpha(0.5f);
         } else {
@@ -156,13 +155,6 @@ public class thirdActivity extends AppCompatActivity {
         }else{
             minusGearPlacedTeleop.setAlpha(1.0f);
         }
-        Button approachBoiler = (Button)findViewById(R.id.approachBoiler);
-        approachBoiler.setEnabled (!approachBoiler.isEnabled());
-        if (!approachBoiler.isEnabled()){
-            approachBoiler.setAlpha(0.5f);
-        }else {
-            approachBoiler.setAlpha(1.0f);
-        }
         Button submitButton = (Button)findViewById(R.id.submitOldButton);
         submitButton.setEnabled (!submitButton.isEnabled());
         if (!submitButton.isEnabled()){
@@ -172,47 +164,7 @@ public class thirdActivity extends AppCompatActivity {
         }
     }
 
-    public void toggleButtons(){
-        toggleAll();
-        toggleGoal();
-    }
-
     public void toggleGoal () {
-        Button leaveBoiler = (Button)findViewById(R.id.leaveBoiler);
-        leaveBoiler.setEnabled (!leaveBoiler.isEnabled());
-        if (!leaveBoiler.isEnabled()) {
-            leaveBoiler.setAlpha(0.5f);
-        } else {
-            leaveBoiler.setAlpha(1.0f);
-        }
-        Button zeroLowGoal = (Button)findViewById(R.id.zeroLowGoal);
-        zeroLowGoal.setEnabled (!zeroLowGoal.isEnabled());
-        if (!zeroLowGoal.isEnabled()){
-            zeroLowGoal.setAlpha(0.5f);
-        }else{
-            zeroLowGoal.setAlpha(1.0f);
-        }
-        Button oneLowGoal = (Button)findViewById(R.id.oneLowGoal);
-        oneLowGoal.setEnabled (!oneLowGoal.isEnabled());
-        if (!oneLowGoal.isEnabled()){
-            oneLowGoal.setAlpha(0.5f);
-        }else{
-            oneLowGoal.setAlpha(1.0f);
-        }
-        Button fiveLowGoal = (Button)findViewById(R.id.fiveLowGoal);
-        fiveLowGoal.setEnabled(!fiveLowGoal.isEnabled());
-        if (!fiveLowGoal.isEnabled()){
-            fiveLowGoal.setAlpha(0.5f);
-        }else{
-            fiveLowGoal.setAlpha(1.0f);
-        }
-        Button tenLowGoal = (Button)findViewById(R.id.tenLowGoal);
-        tenLowGoal.setEnabled (!tenLowGoal.isEnabled());
-        if (!tenLowGoal.isEnabled()){
-            tenLowGoal.setAlpha(0.5f);
-        }else{
-            tenLowGoal.setAlpha(1.0f);
-        }
         Button zeroHighGoal = (Button)findViewById(R.id.zeroHighGoal);
         zeroHighGoal.setEnabled (!zeroHighGoal.isEnabled());
         if (!zeroHighGoal.isEnabled()){
@@ -240,13 +192,6 @@ public class thirdActivity extends AppCompatActivity {
             tenHighGoal.setAlpha(0.5f);
         }else{
             tenHighGoal.setAlpha(1.0f);
-        }
-        Button minusLowGoalTeleop = (Button)findViewById(R.id.minusLowGoalTeleop);
-        minusLowGoalTeleop.setEnabled (!minusLowGoalTeleop.isEnabled());
-        if (!minusLowGoalTeleop.isEnabled()){
-            minusLowGoalTeleop.setAlpha(0.5f);
-        }else{
-            minusLowGoalTeleop.setAlpha(1.0f);
         }
         Button minusHighGoalTeleop = (Button)findViewById(R.id.minusHighGoalTeleop);
         minusHighGoalTeleop.setEnabled (!minusHighGoalTeleop.isEnabled());
@@ -327,47 +272,6 @@ public class thirdActivity extends AppCompatActivity {
         FirstActivity.myAppVariables.eventList.add(droppedGearTeleop);
     }
 
-    public void approachBoiler(View view) {
-        FirstActivity.myAppVariables.approachBoiler = true;
-        GameEvent approachedBoiler = new GameEvent();
-        approachedBoiler.eventType = "approachBoiler";
-        approachedBoiler.eventValue = "1";
-        approachedBoiler.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(approachedBoiler);
-        toggleButtons();
-    }
-
-    public void leaveBoiler(View view) {
-        FirstActivity.myAppVariables.leaveBoiler = true;
-        GameEvent leftBoiler = new GameEvent();
-        leftBoiler.eventType = "leaveBoiler";
-        leftBoiler.eventValue = "1";
-        leftBoiler.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(leftBoiler);
-        toggleButtons();
-    }
-
-    public void lowGoal(View view) {
-        // this is the button that was just pressed
-        TextView lowGoalText = (TextView) findViewById(view.getId());
-        // this is the text view that display the result
-        TextView numberOfLowGoalsTeleop = (TextView) findViewById(R.id.numberOfLowGoalsTeleop);
-        Integer lowGoalButtonValue = 0;
-        if (!lowGoalText.getText().toString().equalsIgnoreCase("X")) {
-            lowGoalButtonValue = Integer.parseInt(lowGoalText.getText().toString());
-        }
-        // increment my variables by the amount of goals just pressed
-        FirstActivity.myAppVariables.numberLowGoalsTeleop += lowGoalButtonValue;
-        // update the text view with the new value of goals scored
-        numberOfLowGoalsTeleop.setText(Integer.toString(FirstActivity.myAppVariables.numberLowGoalsTeleop));
-
-        GameEvent lowGoal = new GameEvent();
-        lowGoal.eventType = "lowGoal";
-        lowGoal.eventValue = lowGoalButtonValue.toString();
-        lowGoal.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(lowGoal);
-    }
-
     public void highGoal(View view) {
         //this is the button
         TextView highGoalText = (TextView) findViewById(view.getId());
@@ -383,19 +287,6 @@ public class thirdActivity extends AppCompatActivity {
         highGoal.eventValue = highGoalButtonValue.toString();
         highGoal.eventTime = System.currentTimeMillis();
         FirstActivity.myAppVariables.eventList.add(highGoal);
-    }
-
-    public void minusLowGoalTeleop(View view) {
-        if (FirstActivity.myAppVariables.numberLowGoalsTeleop > 0) {
-            FirstActivity.myAppVariables.numberLowGoalsTeleop--;
-        }
-        TextView numberOfLowGoalsTeleop = (TextView) findViewById(R.id.numberOfLowGoalsTeleop);
-        numberOfLowGoalsTeleop.setText(Integer.toString(FirstActivity.myAppVariables.numberLowGoalsTeleop));
-        GameEvent minusLowGoalTeleop = new GameEvent();
-        minusLowGoalTeleop.eventType = "lowGoalsTeleop";
-        minusLowGoalTeleop.eventValue = "1";
-        minusLowGoalTeleop.eventTime = System.currentTimeMillis();
-        FirstActivity.myAppVariables.eventList.add(minusLowGoalTeleop);
     }
 
     public void minusHighGoalTeleop(View view) {

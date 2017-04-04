@@ -40,7 +40,6 @@ import static scouting2017.matchapp.R.id.numberOfHopperBalls;
 import static scouting2017.matchapp.R.id.numberOfHoppersDumped;
 import static scouting2017.matchapp.R.id.numberOfHoppersDumpedText;
 import static scouting2017.matchapp.R.id.numberOfHumanGears;
-import static scouting2017.matchapp.R.id.numberOfLowGoalsAuto;
 
 /**
  * Created by mcgrathg19 on 1/18/2017.
@@ -51,7 +50,6 @@ public class Variables {
     //public Intent firstActivity;
     public int numberGearsPlacedAuto;
     public int numberDroppedGearsAuto;
-    public int numberLowGoalsAuto;
     public int numberHighGoalsAuto;
     public int numberHoppersDumpedAuto;
     public int numberHumanGears;
@@ -76,7 +74,6 @@ public class Variables {
     public String competitionName;
     public int droppedGearTeleop;
     public int numberHighGoalsTeleop;
-    public int numberLowGoalsTeleop;
     public BluetoothClient btClient;
 
     public Variables() {
@@ -116,7 +113,6 @@ public class Variables {
     public void reset() {
         numberGearsPlacedAuto = 0;
         numberDroppedGearsAuto = 0;
-        numberLowGoalsAuto = 0;
         numberHighGoalsAuto = 0;
         numberHoppersDumpedAuto = 0;
         numberHumanGears = 0;
@@ -133,7 +129,6 @@ public class Variables {
         allianceColor = false ;
         matchNumber = 0 ;
         numberHighGoalsTeleop = 0;
-        numberLowGoalsTeleop = 0;
         timerStarted = false;
     }
 

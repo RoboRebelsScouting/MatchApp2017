@@ -12,18 +12,6 @@
     tools:context="scouting2017.matchapp.thirdActivity">
 
     <TextView
-        android:text="Teleop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/teleopLabel"
-        android:textSize="36sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold"
-        android:textAlignment="center"
-        android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/lowGoal" />
-
-    <TextView
         android:id="@+id/teleopTimerText"
         android:layout_width="36dp"
         android:layout_height="wrap_content"
@@ -31,19 +19,8 @@
         android:textColor="@android:color/holo_red_dark"
         android:layout_below="@+id/teleopLabel"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/oneLowGoal" />
-
-    <Button
-        android:text="End of Game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/submitOldButton"
-        android:textSize="24sp"
-        android:onClick="toEndOfGame"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_toStartOf="@+id/oneLowGoal"
+        android:layout_alignEnd="@+id/zeroHighGoal" />
 
     <Button
         android:text="—"
@@ -119,20 +96,6 @@
         android:layout_toEndOf="@+id/gearPickedUpHuman"
         android:layout_below="@+id/gearPickedUpHuman"
         android:layout_height="70dp" />
-
-    <Button
-        android:text="Leave Boiler"
-        android:layout_height="wrap_content"
-        android:id="@+id/leaveBoiler"
-        android:onClick = "leaveBoiler"
-        android:textSize="20sp"
-        android:layout_width="225dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/lowGoal"
-        android:layout_alignTop="@+id/approachBoiler"
-        android:layout_alignBottom="@+id/approachBoiler" />
 
     <Button
         android:text="—"
@@ -227,29 +190,6 @@
         android:adjustViewBounds="true"
         android:background="@drawable/gear_placed_8" />
 
-    <Button
-        android:text="10"
-        android:id="@+id/tenLowGoal"
-        android:textSize="30sp"
-        android:onClick = "lowGoal"
-        android:textColor="@android:color/holo_red_dark"
-        android:layout_alignBottom="@+id/fiveLowGoal"
-        android:layout_toEndOf="@+id/fiveLowGoal"
-        android:layout_below="@+id/lowGoal"
-        android:layout_width="105dp"
-        android:layout_height="55dp" />
-
-    <TextView
-        android:text="0"
-        android:id="@+id/numberOfLowGoalsTeleop"
-        android:layout_toEndOf="@+id/tenLowGoal"
-        android:textSize="60sp"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_red_dark"
-        android:layout_width="105dp"
-        android:layout_alignTop="@+id/tenLowGoal"
-        android:layout_height="70dp" />
-
     <TextView
         android:text="0"
         android:id="@+id/numberOfGearsPlaced"
@@ -269,36 +209,8 @@
         android:textColor="@android:color/holo_red_dark"
         android:layout_width="105dp"
         android:layout_toEndOf="@+id/fiveHighGoal"
-        android:layout_height="55dp"
+        android:layout_height="70dp"
         android:layout_below="@+id/highGoal" />
-
-    <Button
-        android:text="—"
-        android:id="@+id/minusLowGoalTeleop"
-        android:layout_width="105dp"
-        android:textStyle="normal|bold"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
-        android:onClick="minusLowGoalTeleop"
-        android:layout_alignTop="@+id/numberOfLowGoalsTeleop"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/numberOfLowGoalsTeleop"
-        android:layout_height="55dp"
-        android:layout_alignBottom="@+id/tenLowGoal" />
-
-    <Button
-        android:text="—"
-        android:layout_width="80dp"
-        android:id="@+id/minusHighGoalTeleop"
-        android:textStyle="normal|bold"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
-        android:onClick="minusHighGoalTeleop"
-        android:layout_alignTop="@+id/numberOfHighGoalsTeleop"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/numberOfHighGoalsTeleop"
-        android:layout_height="55dp"
-        android:layout_alignBottom="@+id/tenHighGoal" />
 
     <Button
         android:text="—"
@@ -339,17 +251,6 @@
         android:layout_toEndOf="@+id/gearPickedUpGround"
         android:layout_height="70dp" />
 
-    <TextView
-        android:text="0"
-        android:id="@+id/numberOfHighGoalsTeleop"
-        android:textSize="60sp"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_red_dark"
-        android:layout_width="105dp"
-        android:layout_alignTop="@+id/tenHighGoal"
-        android:layout_toEndOf="@+id/tenHighGoal"
-        android:layout_height="70dp" />
-
     <ImageButton
         android:src="@drawable/hopper_dumped_8"
         android:id="@+id/hopperDumpedTeleop"
@@ -385,65 +286,6 @@
         android:layout_toStartOf="@+id/numberOfGearsDropped" />
 
     <Button
-        android:text="Approach Boiler"
-        android:onClick = "approachBoiler"
-        android:id="@+id/approachBoiler"
-        android:textSize="20sp"
-        android:layout_width="225dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold"
-        android:layout_height="60dp"
-        android:padding="0dp"
-        android:layout_above="@+id/lowGoal"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="X"
-        android:id="@+id/zeroLowGoal"
-        android:textSize="30sp"
-        android:onClick = "lowGoal"
-        android:textColor="@android:color/holo_red_dark"
-        android:layout_width="105dp"
-        android:layout_height="55dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/oneLowGoal" />
-
-    <Button
-        android:text="5"
-        android:id="@+id/fiveLowGoal"
-        android:textSize="30sp"
-        android:onClick = "lowGoal"
-        android:textColor="@android:color/holo_red_dark"
-        android:layout_width="105dp"
-        android:layout_height="55dp"
-        android:layout_below="@+id/lowGoal"
-        android:layout_toEndOf="@+id/oneLowGoal" />
-
-    <Button
-        android:text="1"
-        android:id="@+id/oneLowGoal"
-        android:textSize="30sp"
-        android:onClick = "lowGoal"
-        android:textColor="@android:color/holo_red_dark"
-        android:layout_width="105dp"
-        android:layout_height="55dp"
-        android:layout_above="@+id/highGoal"
-        android:layout_toEndOf="@+id/zeroLowGoal"
-        android:layout_marginBottom="10dp" />
-
-    <TextView
-        android:text="Low Goals"
-        android:layout_width="150dp"
-        android:id="@+id/lowGoal"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        android:textSize="24sp"
-        android:layout_height="30dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold"
-        android:layout_above="@+id/oneLowGoal"
-        android:layout_toEndOf="@+id/approachBoiler" />
-
-    <Button
         android:text="X"
         android:id="@+id/zeroHighGoal"
         android:textSize="30sp"
@@ -452,7 +294,8 @@
         android:layout_width="105dp"
         android:layout_height="55dp"
         android:layout_below="@+id/highGoal"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/minusHighGoalTeleop" />
 
     <Button
         android:text="1"
@@ -463,7 +306,8 @@
         android:layout_width="105dp"
         android:layout_height="55dp"
         android:layout_toStartOf="@+id/fiveHighGoal"
-        android:layout_below="@+id/highGoal" />
+        android:layout_below="@+id/highGoal"
+        android:layout_alignBottom="@+id/zeroHighGoal" />
 
     <Button
         android:text="5"
@@ -473,21 +317,72 @@
         android:textColor="@android:color/holo_red_dark"
         android:layout_width="105dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="14dp"
+        android:layout_alignStart="@+id/submitOldButton"
         android:layout_above="@+id/submitOldButton"
-        android:layout_alignStart="@+id/submitOldButton" />
+        android:layout_below="@+id/highGoal" />
 
     <TextView
-        android:text="High Goals"
-        android:layout_height="30dp"
+        android:text="KPA"
         android:id="@+id/highGoal"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:layout_width="150dp"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="normal|bold"
-        android:layout_above="@+id/fiveHighGoal"
-        android:layout_alignStart="@+id/lowGoal" />
+        android:textAlignment="center"
+        android:layout_below="@+id/gearPlacedTeleop"
+        android:layout_centerHorizontal="true"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:text="Teleop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/teleopLabel"
+        android:textSize="36sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="—"
+        android:layout_width="80dp"
+        android:id="@+id/minusHighGoalTeleop"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:onClick="minusHighGoalTeleop"
+        android:layout_height="55dp"
+        android:layout_alignBottom="@+id/numberOfHighGoalsTeleop"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/numberOfHighGoalsTeleop"
+        android:layout_toEndOf="@+id/numberOfGearsPlaced" />
+
+    <TextView
+        android:text="0"
+        android:id="@+id/numberOfHighGoalsTeleop"
+        android:textSize="60sp"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="105dp"
+        android:layout_height="70dp"
+        android:layout_alignTop="@+id/tenHighGoal"
+        android:layout_toStartOf="@+id/minusHighGoalTeleop" />
+
+    <Button
+        android:text="End of Game"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:id="@+id/submitOldButton"
+        android:textSize="24sp"
+        android:onClick="toEndOfGame"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/tenHighGoal"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
