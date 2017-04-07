@@ -75,12 +75,24 @@ public class Variables {
     public int droppedGearTeleop;
     public int numberHighGoalsTeleop;
     public BluetoothClient btClient;
+    public boolean btClientSendOnStart = false;
+    public String btClientFileName;
+    public String btClientMessageString;
+    public Activity btClientActivity;
+
 
     public Variables() {
         reset();
     }
 
-    public void startBluetooth(Activity theActivity) {
+    public void startBluetoothWithFile(Activity theActivity, String fileString, String fileNameBase) {
+        btClientSendOnStart = true;
+        btClientFileName = btClient.fname =  String.format("%50s",fileNameBase);
+        btClientMessageString = fileString;
+        btClientActivity = theActivity;
+        btClient = startBluetooth(theActivity);
+    }
+    public BluetoothClient startBluetooth(Activity theActivity) {
         // create bluetooth client and send file
         int REQUEST_ENABLE_BT = 1;
         BluetoothAdapter mBluetoothAdapter = android.bluetooth.BluetoothAdapter.getDefaultAdapter();
@@ -104,10 +116,19 @@ public class Variables {
                 if (deviceName.equalsIgnoreCase("Pit2")) {
                     // create the client, set the file namd and message string, start the thread to send it
                     btClient = new BluetoothClient(mBluetoothAdapter,device);
+
+                    if (btClientSendOnStart) {
+                        btClient.sendOnStart = btClientSendOnStart;
+                        btClient.launchActivity = btClientActivity;
+                        btClient.fname = btClientFileName;
+                        btClient.messageString = btClientMessageString;
+                    }
                     btClient.start();
+                    return btClient;
                 }
             }
         }
+        return null;
     }
 
     public void reset() {
@@ -190,7 +211,14 @@ public class Variables {
                 btClient.fname =  String.format("%50s",fileNameBase);
                 btClient.messageString = fileString;
                 btClient.launchActivity = theActivity;
-                btClient.btSend(fileString);
+
+                // if not connected
+                if (!btClient.mmSocket.isConnected()) {
+                    btClient.cancel();
+                    this.startBluetoothWithFile(theActivity,fileString,fileNameBase);
+                } else {
+                    btClient.btSend(fileString);
+                }
             }
         } catch (IOException e) {
             Log.e("ERROR", "File NOT Created", e);

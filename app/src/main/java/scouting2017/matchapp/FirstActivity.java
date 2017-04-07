@@ -1,6 +1,7 @@
 
 package scouting2017.matchapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.LightingColorFilter;
 import android.net.ParseException;
@@ -21,11 +22,16 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 public class FirstActivity extends AppCompatActivity {
 
     public static Variables myAppVariables ;
+    public static Activity appActivity;
+
     @Override
     public void onBackPressed() {
     }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        appActivity = this;
+
         if (myAppVariables == null) {
             myAppVariables = new Variables () ;
             myAppVariables.startBluetooth(this);

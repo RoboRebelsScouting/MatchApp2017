@@ -2,6 +2,7 @@ package scouting2017.matchapp;
 
 
 import android.app.Activity;
+import android.app.Application;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -26,7 +27,7 @@ import java.util.UUID;
  */
 
 public class BluetoothClient extends Thread {
-    private BluetoothSocket mmSocket;
+    public BluetoothSocket mmSocket;
     private BluetoothAdapter mmAdapter;
     private UUID MY_UUID = UUID.fromString("35c2ad3a-14dc-11e7-93ae-92361f002671");
     private String TAG = "BluetoothClient";
@@ -37,6 +38,7 @@ public class BluetoothClient extends Thread {
     public String fname;
     public String messageString;
     public Activity launchActivity;
+    public boolean sendOnStart = false;
 
     BluetoothDevice mmDevice;
 
@@ -107,7 +109,7 @@ public class BluetoothClient extends Thread {
         return ByteBuffer.wrap(bytes).getInt();
     }
 
-    public void btSend(String message) {
+    public boolean btSend(String message) {
         short msgType = 1;
         byte[] header = new byte[2];
         //header[0] = (byte) (msgType & 0xff);
@@ -158,10 +160,7 @@ public class BluetoothClient extends Thread {
             mmOutStream.write(fileLength);
             mmOutStream.write(messagebytes);
 
-            // Share the sent message with the UI activity.
-            //Message writtenMsg = mHandler.obtainMessage(
-            //        MessageConstants.MESSAGE_WRITE, -1, -1, mmBuffer);
-            //writtenMsg.sendToTarget();
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
 
@@ -174,6 +173,7 @@ public class BluetoothClient extends Thread {
             //         "Couldn't send data to the other device");
             //writeErrorMsg.setData(bundle);
             //mHandler.sendMessage(writeErrorMsg);
+            return false;
         }
     }
 
@@ -185,6 +185,16 @@ public class BluetoothClient extends Thread {
             // Connect to the remote device through the socket. This call blocks
             // until it succeeds or throws an exception.
             mmSocket.connect();
+
+            if (sendOnStart == true) {
+                Log.i(TAG,"Sending file " + fname);
+                if (this.btSend(messageString)) {
+                    Log.i(TAG,"Message sent");
+                } else {
+                    Log.e(TAG,"Message not sent");
+                }
+            }
+
             //btSend(messageString);
         } catch (IOException connectException) {
             // Unable to connect; close the socket and return.
