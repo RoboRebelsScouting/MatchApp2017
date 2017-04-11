@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -35,18 +36,47 @@ public class FirstActivity extends AppCompatActivity {
         if (myAppVariables == null) {
             myAppVariables = new Variables () ;
             myAppVariables.startBluetooth(this);
+        } else {
+            if (!myAppVariables.btClient.mmSocket.isConnected()) {
+                myAppVariables.btClient.cancel();
+                myAppVariables.startBluetooth(this);
+            }
         }
-        setContentView(R.layout.activity_first);
+            setContentView(R.layout.activity_first);
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy");
         TextView eventNameText = (TextView) findViewById(R.id.enterEvent);
         EditText scouterNameText = (EditText) findViewById(R.id.enterName);
-        EditText matchNumberText = (EditText) findViewById(R.id.enterMatch);
+        final EditText matchNumberText = (EditText) findViewById(R.id.enterMatch);
+
+        // whenver match number is entered manually, try to get the robot number
+        matchNumberText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    if (myAppVariables.robotPosition != 0) {
+                        myAppVariables.matchNumber = Integer.parseInt(matchNumberText.getText().toString());
+                        myAppVariables.robotNumber =
+                                myAppVariables.getRobotNumber(myAppVariables.matchNumber, myAppVariables.allianceColor, myAppVariables.robotPosition);
+                        EditText robotText = (EditText) findViewById(R.id.enterRobot);
+                        robotText.setText(String.valueOf(myAppVariables.robotNumber));
+                    }
+                }
+            }
+        });
+
         allianceColorToggleButton();
         if (!myAppVariables.scouterName.equals("")) {
             scouterNameText.setText(myAppVariables.scouterName);
         }
         if (!myAppVariables.scouterName.equals("")) {
             matchNumberText.setText(Integer.toString(myAppVariables.matchNumber));
+            // if robotPosition is set and we have matc schedule loaded, set robot number here
+            if (myAppVariables.robotPosition != 0){
+                myAppVariables.robotNumber =
+                myAppVariables.getRobotNumber(myAppVariables.matchNumber, myAppVariables.allianceColor, myAppVariables.robotPosition);
+                EditText robotText = (EditText) findViewById(R.id.enterRobot);
+                robotText.setText (String.valueOf(myAppVariables.robotNumber));
+            }
         }
         try {
             long currentTimeInMillis = System.currentTimeMillis();
@@ -65,6 +95,10 @@ public class FirstActivity extends AppCompatActivity {
                 eventNameText.setText("UNH");
             }  else {
                 eventNameText.setText("Worlds");
+            }
+            if (myAppVariables.competitionName.equalsIgnoreCase("")) {
+                myAppVariables.competitionName = eventNameText.getText().toString();
+                myAppVariables.getMatchSchedule();
             }
         } catch (java.text.ParseException e) {
             e.printStackTrace();
@@ -92,11 +126,17 @@ public class FirstActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Enter Scouter Name", Toast.LENGTH_LONG).show();
             return;
         }
+
+        if (myAppVariables.robotPosition == 0) {
+            Toast.makeText(getApplicationContext(),"Select Robot Position (1,2, or 3)", Toast.LENGTH_LONG).show();
+            return;
+        }
         FirstActivity.myAppVariables.scouterName = f.getText().toString();
         Intent intent = new Intent(this, secondActivity.class);
         myAppVariables.startAutoTime = System.currentTimeMillis();
         startActivity(intent);
     }
+
     public void allianceColorToggleButton(){
         ToggleButton allianceColor = (ToggleButton) findViewById(R.id.allianceColor);
         allianceColor.setChecked(myAppVariables.allianceColor);
@@ -107,6 +147,28 @@ public class FirstActivity extends AppCompatActivity {
             //BLUE
             allianceColor.getBackground().setColorFilter(new LightingColorFilter (0xFFFF0000,0xFFFF0000));
         }
+    }
+    public void setRobotPosition (View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch(view.getId()) {
+            case R.id.robot1:
+                if (checked == true) {
+                    myAppVariables.robotPosition = 1;
+                }
+
+                break;
+            case R.id.robot2:
+                if (checked == true) {
+                    myAppVariables.robotPosition = 2;
+                }
+                break;
+            case R.id.robot3:
+                if (checked == true) {
+                    myAppVariables.robotPosition = 3;
+                }
+                break;
+        }
+
     }
     public void allianceColor(View view) {
         ToggleButton allianceColor = (ToggleButton) findViewById(R.id.allianceColor);

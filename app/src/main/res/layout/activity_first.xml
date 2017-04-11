@@ -23,38 +23,6 @@
         android:layout_alignParentEnd="true"
         android:layout_height="80dp" />
 
-    <TextView
-        android:text="Event:"
-        android:layout_width="wrap_content"
-        android:id="@+id/Event"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="32sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold"
-        android:textAlignment="viewStart"
-        android:layout_height="80dp"
-        android:layout_below="@+id/Name"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/enterName" />
-
-    <ToggleButton
-        android:text="ToggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/allianceColor"
-        android:textOff="Red Alliance"
-        android:textOn="Blue Alliance"
-        android:textSize="25sp"
-        android:onClick="allianceColor"
-        android:textColor="@android:color/white"
-        android:textColorLink="?attr/actionModeSplitBackground"
-        android:textColorHint="@android:color/holo_red_dark"
-        android:background="@android:color/holo_red_dark"
-        android:layout_alignParentTop="true"
-        android:layout_above="@+id/enterName"
-        android:layout_alignEnd="@+id/startMatch"
-        android:layout_alignStart="@+id/startMatch" />
-
     <EditText
         android:layout_width="wrap_content"
         android:inputType="number"
@@ -67,19 +35,6 @@
         android:layout_height="80dp"
         android:layout_alignTop="@+id/robot"
         android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="Match #:"
-        android:layout_width="wrap_content"
-        android:id="@+id/match"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="32sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold"
-        android:layout_height="80dp"
-        android:layout_below="@+id/Event"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/enterMatch" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -94,6 +49,76 @@
         android:layout_below="@+id/Event"
         android:layout_alignParentEnd="true" />
 
+    <ToggleButton
+        android:text="ToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/allianceColor"
+        android:textOff="Red Alliance"
+        android:textOn="Blue Alliance"
+        android:textSize="25sp"
+        android:onClick="allianceColor"
+        android:textColor="@android:color/white"
+        android:textColorLink="?attr/actionModeSplitBackground"
+        android:textColorHint="@android:color/holo_red_dark"
+        android:background="@android:color/holo_red_dark"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/robot1"
+        android:layout_alignParentTop="true" />
+
+    <Button
+        android:text="Start Match"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startMatch"
+        android:onClick= "toAuto"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Scouter Name:"
+        android:layout_width="wrap_content"
+        android:id="@+id/Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="32sp"
+        android:layout_marginTop="75dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/enterName" />
+
+    <TextView
+        android:text="Event:"
+        android:layout_width="wrap_content"
+        android:id="@+id/Event"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="32sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold"
+        android:textAlignment="viewStart"
+        android:layout_height="80dp"
+        android:layout_below="@+id/enterName"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/enterName" />
+
+    <TextView
+        android:text="Match #:"
+        android:layout_width="wrap_content"
+        android:id="@+id/match"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="32sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="normal|bold"
+        android:layout_height="80dp"
+        android:layout_below="@+id/Event"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/enterMatch" />
+
     <TextView
         android:text="Robot #:"
         android:layout_width="wrap_content"
@@ -106,19 +131,6 @@
         android:layout_below="@+id/match"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/enterRobot" />
-
-    <Button
-        android:text="Start Match"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/startMatch"
-        android:onClick= "toAuto"
-        android:textSize="24sp"
-        android:textStyle="normal|bold"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginTop="24dp"
-        android:layout_alignTop="@+id/textView"
-        android:layout_centerHorizontal="true" />
 
     <TextView
         android:text="WARNING: THIS STARTS A TIMER"
@@ -143,22 +155,52 @@
         android:textAlignment="viewStart"
         android:fontFamily="sans-serif"
         android:layout_height="40dp"
-        android:layout_marginBottom="17dp"
-        android:layout_above="@+id/match"
+        android:layout_marginBottom="15dp"
+        android:layout_above="@+id/enterMatch"
         android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:text="Scouter Name:"
-        android:layout_width="wrap_content"
-        android:id="@+id/Name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="32sp"
-        android:layout_marginTop="55dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="normal|bold"
-        android:layout_height="80dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/enterName" />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:id="@+id/radioGroup"
+        android:layout_alignBottom="@+id/allianceColor"
+        android:layout_alignStart="@+id/startMatch"
+        android:layout_marginStart="43dp">
+        <RadioButton
+            android:text="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/robot1"
+            android:layout_width="125dp"
+            android:layout_alignBaseline="@+id/allianceColor"
+            android:layout_alignBottom="@+id/allianceColor"
+            android:layout_toStartOf="@+id/robot2"
+            android:textSize="35sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:onClick="setRobotPosition" />
+        <RadioButton
+            android:text="2"
+            android:layout_height="wrap_content"
+            android:id="@+id/robot2"
+            android:layout_width="125dp"
+            android:layout_alignBottom="@+id/allianceColor"
+            android:layout_toStartOf="@+id/robot3"
+            android:layout_alignParentTop="true"
+            android:textAlignment="textStart"
+            android:textSize="35sp"
+            android:onClick="setRobotPosition" />
 
+        <RadioButton
+            android:text="3"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/robot3"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@+id/robot2"
+            android:textSize="35sp"
+            android:onClick="setRobotPosition" />
+
+    </RadioGroup>
 </RelativeLayout>

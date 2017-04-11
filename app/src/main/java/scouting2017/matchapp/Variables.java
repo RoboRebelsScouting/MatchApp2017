@@ -19,9 +19,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -78,11 +80,73 @@ public class Variables {
     public boolean btClientSendOnStart = false;
     public String btClientFileName;
     public String btClientMessageString;
+    public int robotPosition = 0;
     public Activity btClientActivity;
-
+    ArrayList<Match> matchArrayList = new ArrayList<Match>();
 
     public Variables() {
+
         reset();
+    }
+
+    public void getMatchSchedule () {
+        File folder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "") ;
+        String fileName = competitionName + "_schedule.dat.csv";
+        File file = new File(folder,fileName);
+
+        if (file.exists()) {
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file));
+                String line;
+
+                try {
+                    while ((line = br.readLine()) != null) {
+                        String[] lineList = line.split(",");
+                        Match newMatch = new Match();
+                        // skip header line
+                        if (!lineList[0].equalsIgnoreCase("Start Time")) {
+                            newMatch.matchNumber = Integer.parseInt(lineList[1]);
+                            newMatch.red1 = Integer.parseInt(lineList[2]);
+                            newMatch.red2 = Integer.parseInt(lineList[3]);
+                            newMatch.red3 = Integer.parseInt(lineList[4]);
+                            newMatch.blue1 = Integer.parseInt(lineList[5]);
+                            newMatch.blue2 = Integer.parseInt(lineList[6]);
+                            newMatch.blue2 = Integer.parseInt(lineList[7]);
+                            matchArrayList.add(newMatch);
+                        }
+                    }
+                } catch (java.io.IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public int getRobotNumber(int matchNumber, boolean allianceColor, int robotPosition) {
+        for (Match m : matchArrayList) {
+            if (m.matchNumber == matchNumber) {
+                if (!allianceColor) {
+                    if (robotPosition == 1) {
+                        return m.red1;
+                    } else if (robotPosition == 2) {
+                        return m.red2;
+                    } else {
+                        return m.red3;
+                    }
+                } else {
+                    if (robotPosition == 1) {
+                        return m.blue1;
+                    } else if (robotPosition == 2) {
+                        return m.blue2;
+                    } else {
+                        return m.blue3;
+                    }
+                }
+            }
+        }
+        return 0;
     }
 
     public void startBluetoothWithFile(Activity theActivity, String fileString, String fileNameBase) {
