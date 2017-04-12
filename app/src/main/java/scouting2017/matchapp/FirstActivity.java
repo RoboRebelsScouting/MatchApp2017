@@ -168,7 +168,12 @@ public class FirstActivity extends AppCompatActivity {
                 }
                 break;
         }
-
+        if (myAppVariables.matchNumber != 0){
+            myAppVariables.robotNumber =
+                    myAppVariables.getRobotNumber(myAppVariables.matchNumber, myAppVariables.allianceColor, myAppVariables.robotPosition);
+            EditText robotText = (EditText) findViewById(R.id.enterRobot);
+            robotText.setText(String.valueOf(myAppVariables.robotNumber));
+        }
     }
     public void allianceColor(View view) {
         ToggleButton allianceColor = (ToggleButton) findViewById(R.id.allianceColor);

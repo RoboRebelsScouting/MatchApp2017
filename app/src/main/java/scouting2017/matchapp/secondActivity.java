@@ -34,7 +34,7 @@ public class secondActivity extends AppCompatActivity {
         // don't create new timer
         if (myAppVariables.timerStarted == false) {
             myAppVariables.timerStarted = true;
-            myAppVariables.autoTime = 17000;
+            myAppVariables.autoTime = 20000;
             TextView autoTimerText = (TextView) findViewById(R.id.autoTimerText);
             autoTimerText.setText(String.valueOf(myAppVariables.autoTime / 1000));
             autoTimer.postDelayed(updateTimer, 1000);
