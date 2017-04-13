@@ -40,6 +40,10 @@ public class thirdActivity extends AppCompatActivity {
         teleopTimer.postDelayed(updateTimer, 1000);
         //toggleGoal();
         ImageButton hopperDumpedTeleop = (ImageButton)findViewById(R.id.hopperDumpedTeleop);
+        TextView numberOfHighGoalsTeleop = (TextView) findViewById(R.id.numberOfHighGoalsTeleop);
+        FirstActivity.myAppVariables.numberHighGoalsTeleop = FirstActivity.myAppVariables.numberHighGoalsAuto;
+        numberOfHighGoalsTeleop.setText (String.valueOf(FirstActivity.myAppVariables.numberHighGoalsTeleop));
+
     }
 
     public void toEndOfGame(View view) {
@@ -276,7 +280,7 @@ public class thirdActivity extends AppCompatActivity {
         //this is the button
         TextView highGoalText = (TextView) findViewById(view.getId());
         TextView numberOfHighGoalsTeleop = (TextView) findViewById(R.id.numberOfHighGoalsTeleop);
-        Integer highGoalButtonValue = 0;
+        Integer highGoalButtonValue = FirstActivity.myAppVariables.numberHighGoalsAuto;
         if (!highGoalText.getText().toString().equalsIgnoreCase("X")) {
             highGoalButtonValue = Integer.parseInt(highGoalText.getText().toString());
         }
