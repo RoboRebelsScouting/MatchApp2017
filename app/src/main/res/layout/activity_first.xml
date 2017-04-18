@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_first"
     android:layout_width="match_parent"
@@ -179,10 +178,7 @@
             android:layout_toStartOf="@+id/robot2"
             android:textSize="35sp"
             android:textColor="@color/colorPrimaryDark"
-            android:onClick="setRobotPosition"
-            android:textStyle="normal|bold"
-            app:buttonTint="@android:color/holo_red_dark"
-            android:checked="false" />
+            android:onClick="setRobotPosition" />
         <RadioButton
             android:text="2"
             android:layout_height="wrap_content"
@@ -193,10 +189,7 @@
             android:layout_alignParentTop="true"
             android:textAlignment="textStart"
             android:textSize="35sp"
-            android:onClick="setRobotPosition"
-            android:textStyle="normal|bold"
-            android:textColor="@color/colorPrimaryDark"
-            app:buttonTint="@android:color/holo_red_dark" />
+            android:onClick="setRobotPosition" />
 
         <RadioButton
             android:text="3"
@@ -207,10 +200,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignBottom="@+id/robot2"
             android:textSize="35sp"
-            android:onClick="setRobotPosition"
-            android:textStyle="normal|bold"
-            android:textColor="@color/colorPrimaryDark"
-            app:buttonTint="@android:color/holo_red_dark" />
+            android:onClick="setRobotPosition" />
 
     </RadioGroup>
 </RelativeLayout>
