@@ -111,7 +111,7 @@ public class Variables {
                             newMatch.red3 = Integer.parseInt(lineList[4]);
                             newMatch.blue1 = Integer.parseInt(lineList[5]);
                             newMatch.blue2 = Integer.parseInt(lineList[6]);
-                            newMatch.blue2 = Integer.parseInt(lineList[7]);
+                            newMatch.blue3 = Integer.parseInt(lineList[7]);
                             matchArrayList.add(newMatch);
                         }
                     }
