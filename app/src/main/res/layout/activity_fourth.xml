@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/broken"
         android:layout_alignParentStart="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/radioGroup2">
 
              <RadioButton
                 android:text="Yes"

@@ -177,7 +177,7 @@ public class Variables {
                 String deviceName = device.getName();
                 String deviceHardwareAddress = device.getAddress(); // MAC address
 
-                if (deviceName.equalsIgnoreCase("Pit2")) {
+                if (deviceName.equalsIgnoreCase("TestingServer")) {
                     // create the client, set the file namd and message string, start the thread to send it
                     btClient = new BluetoothClient(mBluetoothAdapter,device);
 
