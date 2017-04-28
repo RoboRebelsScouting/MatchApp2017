@@ -149,6 +149,35 @@ public class Variables {
         return 0;
     }
 
+    public void setAssignment(String assignment) {
+        switch (assignment) {
+            case "Red 1":
+                allianceColor = false;
+                robotPosition = 1;
+                break;
+            case "Red 2":
+                allianceColor = false;
+                robotPosition = 2;
+                break;
+            case "Red 3":
+                allianceColor = false;
+                robotPosition = 3;
+                break;
+            case "Blue 1":
+                allianceColor = true;
+                robotPosition = 1;
+                break;
+            case "Blue 2":
+                allianceColor = true;
+                robotPosition = 2;
+                break;
+            case "Blue 3":
+                allianceColor = true;
+                robotPosition = 3;
+                break;
+        }
+    }
+
     public void startBluetoothWithFile(Activity theActivity, String fileString, String fileNameBase) {
         btClientSendOnStart = true;
         btClientFileName = btClient.fname =  String.format("%50s",fileNameBase);

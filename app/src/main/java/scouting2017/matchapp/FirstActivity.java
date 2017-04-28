@@ -2,11 +2,16 @@
 package scouting2017.matchapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.LightingColorFilter;
 import android.net.ParseException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -42,6 +47,11 @@ public class FirstActivity extends AppCompatActivity {
                 myAppVariables.startBluetooth(this);
             }
         }
+
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        String assignment = sharedPref.getString("pref_assignment", "Red 1");
+        myAppVariables.setAssignment(assignment);
+
             setContentView(R.layout.activity_first);
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy");
         TextView eventNameText = (TextView) findViewById(R.id.enterEvent);
@@ -64,7 +74,6 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        allianceColorToggleButton();
         if (!myAppVariables.scouterName.equals("")) {
             scouterNameText.setText(myAppVariables.scouterName);
         }
@@ -105,6 +114,25 @@ public class FirstActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_first, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     public void toAuto(View view) {
 
         EditText t = (EditText) findViewById(R.id.enterRobot);
@@ -135,60 +163,5 @@ public class FirstActivity extends AppCompatActivity {
         Intent intent = new Intent(this, secondActivity.class);
         myAppVariables.startAutoTime = System.currentTimeMillis();
         startActivity(intent);
-    }
-
-    public void allianceColorToggleButton(){
-        ToggleButton allianceColor = (ToggleButton) findViewById(R.id.allianceColor);
-        allianceColor.setChecked(myAppVariables.allianceColor);
-        if (myAppVariables.allianceColor) {
-            //RED
-            allianceColor.getBackground().setColorFilter(new LightingColorFilter(0xFF0000FF, 0xFF0000FF));
-        } else {
-            //BLUE
-            allianceColor.getBackground().setColorFilter(new LightingColorFilter (0xFFFF0000,0xFFFF0000));
-        }
-    }
-    public void setRobotPosition (View view) {
-        boolean checked = ((RadioButton) view).isChecked();
-        switch(view.getId()) {
-            case R.id.robot1:
-                if (checked == true) {
-                    myAppVariables.robotPosition = 1;
-                }
-
-                break;
-            case R.id.robot2:
-                if (checked == true) {
-                    myAppVariables.robotPosition = 2;
-                }
-                break;
-            case R.id.robot3:
-                if (checked == true) {
-                    myAppVariables.robotPosition = 3;
-                }
-                break;
-        }
-        if (myAppVariables.matchNumber != 0){
-            myAppVariables.robotNumber =
-                    myAppVariables.getRobotNumber(myAppVariables.matchNumber, myAppVariables.allianceColor, myAppVariables.robotPosition);
-            EditText robotText = (EditText) findViewById(R.id.enterRobot);
-            robotText.setText(String.valueOf(myAppVariables.robotNumber));
-        }
-    }
-    public void allianceColor(View view) {
-        ToggleButton allianceColor = (ToggleButton) findViewById(R.id.allianceColor);
-        if (allianceColor.isChecked()) {
-            //RED
-            allianceColor.getBackground().setColorFilter(new LightingColorFilter(0xFF0000FF, 0xFF0000FF));
-        } else {
-            //BLUE
-            allianceColor.getBackground().setColorFilter(new LightingColorFilter (0xFFFF0000,0xFFFF0000));
-        }
-        String allianceColorButtonText = allianceColor.getText().toString();
-        if (allianceColorButtonText.equals("Blue Alliance")) {
-            FirstActivity.myAppVariables.allianceColor = true ;
-        } else {
-            FirstActivity.myAppVariables.allianceColor = false ;
-        }
     }
 }

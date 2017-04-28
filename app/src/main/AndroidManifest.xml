@@ -10,10 +10,11 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="MatchApp Ver4.4"
+        android:label="MatchApp Ver4.5"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FirstActivity"
+        <activity
+            android:name=".FirstActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,16 +22,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".secondActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".display_message_activity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".DisplayMessageActivity1"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".thirdActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity_fourth"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".secondActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".display_message_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DisplayMessageActivity1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".thirdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity_fourth"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/activity_settings"/>
     </application>
 
 </manifest>
