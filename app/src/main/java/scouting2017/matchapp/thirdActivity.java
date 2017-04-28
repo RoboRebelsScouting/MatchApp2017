@@ -299,11 +299,11 @@ public class thirdActivity extends AppCompatActivity {
         }
         TextView numberOfHighGoalsTeleop = (TextView) findViewById(R.id.numberOfHighGoalsTeleop);
         numberOfHighGoalsTeleop.setText(Integer.toString(FirstActivity.myAppVariables.numberHighGoalsTeleop));
-        //GameEvent minusHighGoalsTeleop = new GameEvent();
-        //minusHighGoalsTeleop.eventType = "highGoalsTeleop";
-        //minusHighGoalsTeleop.eventValue = "1";
-       // minusHighGoalsTeleop.eventTime = System.currentTimeMillis();
-       // FirstActivity.myAppVariables.eventList.add(minusHighGoalsTeleop);
+        GameEvent minusHighGoalsTeleop = new GameEvent();
+        minusHighGoalsTeleop.eventType = "highGoalsTeleop";
+        minusHighGoalsTeleop.eventValue = "-1";
+        minusHighGoalsTeleop.eventTime = System.currentTimeMillis();
+        FirstActivity.myAppVariables.eventList.add(minusHighGoalsTeleop);
     }
 
     public void minusGroundGear(View view) {
@@ -314,7 +314,7 @@ public class thirdActivity extends AppCompatActivity {
         numberOfGroundGears.setText(Integer.toString(FirstActivity.myAppVariables.numberGroundGears));
         GameEvent minusGroundGear = new GameEvent();
         minusGroundGear.eventType = "groundGearPickedUp";
-        minusGroundGear.eventValue = "1";
+        minusGroundGear.eventValue = "-1";
         minusGroundGear.eventTime = System.currentTimeMillis();
         FirstActivity.myAppVariables.eventList.add(minusGroundGear);
     }
@@ -327,7 +327,7 @@ public class thirdActivity extends AppCompatActivity {
         numberOfHumanGears.setText(Integer.toString(FirstActivity.myAppVariables.numberHumanGears));
         GameEvent minusHumanGear = new GameEvent();
         minusHumanGear.eventType = "humanGearPickedUp";
-        minusHumanGear.eventValue = "1";
+        minusHumanGear.eventValue = "-1";
         minusHumanGear.eventTime = System.currentTimeMillis();
         FirstActivity.myAppVariables.eventList.add(minusHumanGear);
     }
@@ -340,7 +340,7 @@ public class thirdActivity extends AppCompatActivity {
         numberOfGearsPlaced.setText(Integer.toString(FirstActivity.myAppVariables.numberGearsPlaced));
         GameEvent minusGearPlacedTeleop = new GameEvent();
         minusGearPlacedTeleop.eventType = "gearPlacedTeleop";
-        minusGearPlacedTeleop.eventValue = "1";
+        minusGearPlacedTeleop.eventValue = "-1";
         minusGearPlacedTeleop.eventTime = System.currentTimeMillis();
         FirstActivity.myAppVariables.eventList.add(minusGearPlacedTeleop);
     }
@@ -353,7 +353,7 @@ public class thirdActivity extends AppCompatActivity {
         numberOfGearsDropped.setText(Integer.toString(FirstActivity.myAppVariables.numberDroppedGears));
         GameEvent minusDroppedGearTeleop = new GameEvent();
         minusDroppedGearTeleop.eventType = "droppedGearTeleop";
-        minusDroppedGearTeleop.eventValue = "1";
+        minusDroppedGearTeleop.eventValue = "-1";
         minusDroppedGearTeleop.eventTime = System.currentTimeMillis();
         FirstActivity.myAppVariables.eventList.add(minusDroppedGearTeleop);
     }
@@ -366,7 +366,7 @@ public class thirdActivity extends AppCompatActivity {
         numberOfHoppersDumped.setText(Integer.toString(FirstActivity.myAppVariables.numberHoppersDumpedTeleop));
         GameEvent minusHopperTeleop = new GameEvent();
         minusHopperTeleop.eventType = "hopperDumpedTeleop";
-        minusHopperTeleop.eventValue = "1";
+        minusHopperTeleop.eventValue = "-1";
         minusHopperTeleop.eventTime = System.currentTimeMillis();
         FirstActivity.myAppVariables.eventList.add(minusHopperTeleop);
     }
@@ -379,7 +379,7 @@ public class thirdActivity extends AppCompatActivity {
         numberOfHopperBalls.setText(Integer.toString(FirstActivity.myAppVariables.numberHopperBalls));
         GameEvent minusHopperBalls = new GameEvent();
         minusHopperBalls.eventType = "hopperBalls";
-        minusHopperBalls.eventValue = "1";
+        minusHopperBalls.eventValue = "-1";
         minusHopperBalls.eventTime = System.currentTimeMillis();
         FirstActivity.myAppVariables.eventList.add(minusHopperBalls);
     }
