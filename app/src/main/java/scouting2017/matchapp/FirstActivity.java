@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.LightingColorFilter;
 import android.net.ParseException;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -48,7 +49,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         }
 
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         String assignment = sharedPref.getString("pref_assignment", "Red 1");
         myAppVariables.setAssignment(assignment);
 
